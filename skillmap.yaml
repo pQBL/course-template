@@ -1,30 +1,36 @@
-Week-1:
-  unit_name: Intro to Golang & Basic Concurrency
-  questions_per_skill: 10
+role_description: Your are a pedagogical professor in computer science, with 20+ years of experience.
+course_description: |
+  The course is an introduction to parallel and concurrent programming, and the programming language is Go / Golang.
+  Assume students have some programming experience in another language, such as Java or Python.
+  Provide code snippets to make it more interesting, and format inline code as monospace.
+questions_per_skill: 10
 
-  page-1:
+unit_1:
+  unit_name: Intro to Golang & Basic Concurrency
+
+  page_1:
     page_name: What is parallelism and concurrency?
     skills:
       - Understand the basics of concurrency & parallelism & sequential
 
-  page-2: 
+  page_2: 
     page_name: Setting up Go
     skills:
       - Setup a functioning Go environment and set up Go modules
 
-  page-3:
+  page_3:
     page_name: Tour of Go 1 (Basics)
     skills:
       - "Understand and apply Golang fundamentals: Basic syntax"
       - "Understand and apply Golang fundamentals: Types"
       - "Understand and apply Golang fundamentals: Control structures"
 
-  page-4:
+  page_4:
     page_name: Tour of Go 2 (Data structures)
     skills:
       - "Understand and apply Golang fundamentals: Data structures (arrays, maps, slices)"
 
-  page-5:
+  page_5:
     page_name: Tour of Go 3 (Functions)
     skills:
       - "Understand and apply Golang fundamentals: Functions"
@@ -32,19 +38,19 @@ Week-1:
       - "Understand and apply Golang fundamentals: Closures"
       - "Understand and apply Golang fundamentals: Anonymous functions"
 
-  page-6:
+  page_6:
     page_name: Tour of Go 4 (Pointers, structs & methods)
     skills:
       - "Understand and apply Golang fundamentals: Pointers"
       - "Understand and apply Golang fundamentals: Structs"
       - "Understand and apply Golang fundamentals: Methods"
 
-  page-7:
+  page_7:
     page_name: How is Go different from Java?
     skills:
       - Be able to compare differences between Go and Java
 
-  page-8:
+  page_8:
     page_name: A touch of concurrency
     skills:
       - Primitives for concurrency in Go
