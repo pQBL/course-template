@@ -1,0 +1,52 @@
+Week-1:
+  unit_name: Intro to Golang & Basic Concurrency
+  questions_per_skill: 10
+
+  page-1:
+    page_name: What is parallelism and concurrency?
+    skills:
+      - Understand the basics of concurrency & parallelism & sequential
+
+  page-2: 
+    page_name: Setting up Go
+    skills:
+      - Setup a functioning Go environment and set up Go modules
+
+  page-3:
+    page_name: Tour of Go 1 (Basics)
+    skills:
+      - "Understand and apply Golang fundamentals: Basic syntax"
+      - "Understand and apply Golang fundamentals: Types"
+      - "Understand and apply Golang fundamentals: Control structures"
+
+  page-4:
+    page_name: Tour of Go 2 (Data structures)
+    skills:
+      - "Understand and apply Golang fundamentals: Data structures (arrays, maps, slices)"
+
+  page-5:
+    page_name: Tour of Go 3 (Functions)
+    skills:
+      - "Understand and apply Golang fundamentals: Functions"
+      - "Understand and apply Golang fundamentals: Variadic parameter functions"
+      - "Understand and apply Golang fundamentals: Closures"
+      - "Understand and apply Golang fundamentals: Anonymous functions"
+
+  page-6:
+    page_name: Tour of Go 4 (Pointers, structs & methods)
+    skills:
+      - "Understand and apply Golang fundamentals: Pointers"
+      - "Understand and apply Golang fundamentals: Structs"
+      - "Understand and apply Golang fundamentals: Methods"
+
+  page-7:
+    page_name: How is Go different from Java?
+    skills:
+      - Be able to compare differences between Go and Java
+
+  page-8:
+    page_name: A touch of concurrency
+    skills:
+      - Primitives for concurrency in Go
+      - Making a Go program become concurrent
+      - Creating a channel for communication

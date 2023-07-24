@@ -1,0 +1,73 @@
+name: torus deployment
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+    paths:
+      - 'course_content/**'
+
+jobs:
+
+  torus_deployment:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    name: torus deployment
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        path: main
+        fetch-depth: 0  # Fetch all history for all branches and tags.
+
+    - name: Find new/changed course file
+      id: files
+      working-directory: main
+      run: echo "changed_files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep '^course_content/')" >> "$GITHUB_OUTPUT"
+      
+    - name: Comment deployment is starting
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `Deployment of file: "${{ steps.files.outputs.changed_files }}" is beginning 🚀 \nExpect this to take a couple of minutes ⏰`
+          })
+          
+    - name: Checkout private torusbot repo
+      uses: actions/checkout@v3
+      with:
+        repository: pQBL/torusbot 
+        token: ${{ secrets.BOTS_ACCESS_TOKEN }}
+        path: bot
+    
+    - name: Install python dependeices
+      run: pip install -r bot/requirements.txt
+
+    - name: Run torusbot and save multiline output
+      id: run_torusbot
+      run: |
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "torusbot-output<<$EOF" >> "$GITHUB_OUTPUT"
+        python bot/torusbot.py main/${{ steps.files.outputs.changed_files }} >> "$GITHUB_OUTPUT"
+        echo "$EOF" >> "$GITHUB_OUTPUT"
+      env:
+        CURRICULUM_URL: ${{ secrets.CURRICULUM_URL }}
+        USER_EMAIL: ${{ secrets.USER_EMAIL }}
+        USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+      
+    - name: Comment deployment result
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `${{steps.run_torusbot.outputs.torusbot-output}}`
+          })

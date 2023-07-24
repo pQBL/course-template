@@ -1,0 +1,32 @@
+name: qbl bot pipeline
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  qbl-bot-pipeline:
+    name: qbl bot pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: main
+          fetch-depth: 0  # Fetch all history for all branches and tags.
+
+      - name: Checkout private qbl-bot-pipeline repo
+        uses: actions/checkout@v3
+        with:
+          repository: pQBL/qbl-bot-pipeline 
+          token: ${{ secrets.BOTS_ACCESS_TOKEN }}
+          path: bot
+          
+      - name: Install python dependeices
+        run: pip install -r bot/requirements.txt
+
+      - name: run qbl-bot-pipeline
+        working-directory: bot
+        run: python qbl_bot_pipeline.py ../main/skillmap.y*ml ../main/course_content
+        env:
+          OPENAI_API_KEY_KTH: ${{ secrets.OPENAI_API_KEY_KTH }}
+          GH_TOKEN: ${{ github.token }}
