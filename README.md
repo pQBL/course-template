@@ -1,7 +1,7 @@
 # Repository for creating a QBL course on Torus
 
 ## Overview
-This repo uses AI to let you generate questions for a Question Based Learning (QBL) course from a predefined course skill map. It then lets you edit the questions and upload them automatically to the [Torus](https://oli.cmu.edu/torus/) educational platform, all in one workflow!
+This repo uses AI to let you generate questions for a Question Based Learning (QBL) course from a predefined course skill map. It then lets you edit the questions and upload them automatically to the [Torus](https://oli.cmu.edu/torus/) educational platform, all in the same repo!
 
 This is done using the OpenAI [Chat Completions API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) for generating qustions and [Selenium](https://www.selenium.dev/) for the Torus automation.
 
