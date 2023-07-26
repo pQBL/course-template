@@ -32,7 +32,7 @@ To set up the workflow you need to do the below steps. The video tutorials furth
 
 ## How to create a course
 
-After the proper [setup](/skillmap.yaml) has been completed, the course creation process can be broken down into the following steps:
+After the proper [setup](#setup) has been completed, the course creation process can be broken down into the following steps:
 
 1. Creating a skill map
 2. Generating pages with questions
