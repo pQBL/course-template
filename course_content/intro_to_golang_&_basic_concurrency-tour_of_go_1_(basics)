@@ -1,0 +1,234 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: Tour of Go 1 (Basics)
+
+1. In Go, which of the following statements correctly initializes a variable "number" with the integer value 5?
+
+    A) let number := 5
+    - Incorrect. 'let' is not a valid keyword in Go. Instead, Go uses ':=' for short declaration.
+
+    B) var number integer = 5
+    - Incorrect. Though 'var' is correct, 'integer' is not a data type in Go. The 'int' keyword is used for integer data types.
+
+    C) number := 5
+    - Correct. ':=' is a short form declaration in Go when you directly want to assign a value to the variable.
+
+2. Which of the following correctly imports the 'fmt' package necessary for formatting in Go?
+
+    A) #use "fmt"
+    - Incorrect. '#use' is not valid in Go. It doesn't use the '#' symbol for anything related to package handling.
+
+    B) require "fmt"
+    - Incorrect. Go doesn't use the 'require' statement for importing packages. 
+
+    C) import "fmt"
+    - Correct. 'import' is the keyword used to import packages in Go.
+
+3. Consider the function declaration in Go: `func addition(a int, b int) int`. How would you call this function with the arguments 3 and 5?
+
+    A) addition 3, 5
+    - Incorrect. In Go, function arguments need to be enclosed in parentheses.
+
+    B) addition(3, 5)
+    - Correct. The arguments are correctly enclosed in parentheses.
+
+    C) addition:3, 5
+    - Incorrect. Go doesn't use colons for calling functions.
+
+4. How would you implement an if-else loop to check if a variable 'x' is greater than 10 in Go?
+
+    A) if (x > 10) {...} else {...}
+    - Incorrect. In Go, there are no round brackets "( )" around conditions in if-else loops.
+
+    B) if x > 10 {...} else {...}
+    - Correct. This is the correct syntax of an if-else statement in Go.
+
+    C) if [x > 10] then {...} else {...}
+    - Incorrect. Go doesn't use brackets or the 'then' keyword in if-else loops.
+
+5. What is the appropriate way of defining string variables in Go?
+
+    A) var str = "Hello, world!"
+    - Incorrect. Though this syntax will work, it is not fully correct as it doesn't specify the variable data type 'string'. 
+
+    B) var str string = "Hello, world!"
+    - Correct. This defines 'str' as a string and assigns it the value "Hello, world!".
+
+    C) str := string "Hello, world!"
+    - Incorrect. The ':=' operator is used for shorthand but 'string' as keyword should not be after ':=' operator.
+
+1. You're writing a Go program and accidentally define a variable as `var x int = "5"`. What will happen?
+
+    A) Go will implicitly convert "5" to an integer since `x` is declared as int.
+    - Incorrect. Go has strong typing rules and doesn't automatically convert types. It would throw a compile-time error.
+   
+    B) A compile-time error will occur.
+    - Correct. With Go's strong typing, this code will fail to compile because you're trying to assign a string to an int variable.
+    
+    C) The program will run but 'x' will hold a non-deterministic value.
+    - Incorrect. This type mismatch is not a runtime error in Go, but a compile-time error.
+
+2. Examine the Go code `var y string := "Hello World"`. Why is this code incorrect?
+
+   A) It is attempting to declare a variable with type inference and explicit declaration simultaneously.
+   - Correct. Recall that in Go, you can either use `var y string = "Hello World"` (explicit declaration) or `y := "Hello World"` (short declaration with type inference).
+   
+   B) String variables cannot hold more than one word.
+   - Incorrect. The problem is not with the string value but with the variable declaration syntax.
+   
+   C) The semi-colon at the end is unnecessary in Go.
+   - Incorrect. Although Go does not require semicolons at the end of statements (as they are automatically inserted by the compiler at the end of each line), the main problem here is the variable declaration syntax.
+
+3. Suppose you have a `float64` value and an `int` value in Go. You want to add them together. How would you accomplish this?
+
+    A) By explicitly converting the int value to a float64 value.
+    - Correct. Go language requires explicit type conversion when operating on different types. So you need to convert the `int` to `float64` before adding them.
+    
+    B) No changes are required. Go will implicitly convert and add the values.
+    - Incorrect. Go language does not support type coercion like JavaScript or Python. You need to convert the `int` to `float64` explicitly.
+    
+    C) By converting the float64 value to a string and concatenating it with int value.
+    - Incorrect. This operation would result in a string, not a number.
+
+4. Consider the Go code `type NewInt int`. What exactly is `NewInt` in this context?
+
+    A) A type alias for `int`.
+    - Incorrect. `NewInt` is not an alias; it's a new type. To create an alias in Go, you'd need to write `type NewInt = int`.
+    
+    B) A function that returns an `int`.
+    - Incorrect. While the `func` keyword defines functions in Go, the `type` keyword is for creating new types. `NewInt` is a new type.
+    
+    C) A new type, based on `int`, but not interchangeable with it.
+    - Correct. `NewInt` is a new type distinct from `int`; it cannot be used interchangeably with `int` without explicit conversion.
+
+5. You're refactoring some Go code and find a variable declaration: `x := 3.14`. What is the type of `x`?
+
+    A) int
+    - Incorrect. Although `x` has been assigned a number, it's not an `int`. `3.14` is a floating point number, so `x` is inferred as type `float64`.
+    
+    B) float64
+    - Correct. By default, Go infers floating point literals as `float64`.
+    
+    C) string
+    - Incorrect. `x` has been assigned a numeric value, not a string.
+
+6. What's the difference between defining a type and defining a type alias in Go?
+
+    A) Types and type aliases are for creating new types, but types create a new, distinct type while aliases create an additional name for an existing type. 
+    - Correct. In simple terms, if you create a variable of a new type, it cannot be used interchangeably with the original type. But a variable of an alias can be used interchangeably with the original type.
+    
+    B) There is no difference between defining a type and defining a type alias.
+    - Incorrect. While both deal with types, a type definition creates a new type, whereas a type alias creates a new name for an existing type.
+    
+    C) Type definitions are mutable, but type aliases are immutable.
+    - Incorrect. Both definitions and aliases create types, not variables, so the question of mutability does not apply.
+
+7. What is the zero value of a variable of type `int` in Go?
+
+    A) Null
+    - Incorrect. "Null" is not a concept in Go. The zero value concept in Go means that variables declared without an explicit initial value are given their zero value - and the zero value for `int` type is `0`.
+    
+    B) It doesn't have a zero value.
+    - Incorrect. All types in Go have a zero value. This value is assigned when a variable is declared without an explicit initial value.
+    
+    C) 0
+    - Correct. The zero value of an `int` in Go is `0`.
+
+8. How does Go treat constants?
+
+    A) Constants are implicitly converted to match the type they are assigned to.
+    - Correct. Go constants aren't just unchangeable variables. They're more flexible — they don't have a fixed type until they're explicitly assigned to a variable with a type, or used in a place where they need a type.
+    
+    B) Constants always need an explicitly defined type.
+    - Incorrect. In Go, constants can either have a type, or be 'untyped'. If you don't give a type to a constant, Go will infer it when needed.
+    
+    C) Constants represent mutable entities that do not change.
+    - Incorrect. Constants in Go are immutable - that's what makes them constants!
+
+9. What is the behavior of untyped constants in Go?
+
+    A) They retain their 'untyped' status until they are assigned to a variable.
+    - Correct. Untyped constants in Go have a default type but can assume any compatible type if needed, they get the type strictly when they are assigned to a variable or when they are used in an explicit context that requires a specific type.
+   
+    B) They are automatically assigned an 'int' type.
+    - Incorrect. Untyped constants do not automatically default to `int`, their type gets decided based on the context where they're used.
+   
+    C) They are always treated as strings.
+    - Incorrect. The type of the untyped constants gets decided based on the context where it is used and its value, not always a string.
+
+10. What would `var z int` do in a Go program?
+
+    A) It causes a syntax error.
+    - Incorrect. There's no syntax error. `var z int` is a valid variable declaration in Go.
+    
+    B) It declares a variable `z` and assigns the integer zero value to it.
+    - Correct. This is the correct answer. In Go, if you declare a variable without giving it a value, it automatically gets the zero value of its type.
+    
+    C) It declares a variable `z` with no assigned value.
+    - Incorrect. Although `z` is not given a value explicitly, Go assigns it the zero value of the declared type. In this case, `z` would hold the value `0`.
+
+1. Imagine you have a program with a function that might cause a panic. Which control structure would you use to recover control after a panic?
+
+    A) defer alongside with recover
+    - Correct. Using `defer` alongside `recover` is the best way to handle errors and recover control in Go.
+ 
+    B) if-else
+    - Incorrect. While `if-else` is used for conditional structures, it isn't uniquely designed for error handling in Go.
+
+    C) for-loop beside a panic
+    - Incorrect. The `for` looping structure and `panic` do not help in recovering control after a go routine panics.
+
+
+2. Here is a piece of code:
+
+```
+for index, value := range myArray {
+    fmt.Println("Index:", index, "Value:", value)
+}
+```
+
+What does the above `for` loop do in Go?
+
+    A) It prints the index of myArray
+    - Incorrect. Not just the indexes, it prints both indexes and values from `myArray`.
+ 
+    B) It prints all the values of myArray
+    - Incorrect. It prints both the values and their corresponding indexes from `myArray`.
+    
+    C) It prints both the index and value for each item in myArray.
+    - Correct. The given code snippet prints each item's index and value from `myArray`.
+
+
+3. Let's say you're given a simple task to accept a grade and display the result as 'pass' if the grade is 50 or above, and 'fail' otherwise. Which Golang control structure would be the optimal choice?
+
+    A) switch-case
+    - Incorrect. While a `switch-case` can be used, an `if-else` structure will be more straightforward for this binary condition scenario.
+ 
+    B) if-else
+    - Correct. An `if-else` structure is the optimal choice for binary conditions.
+    
+    C) for-loop
+    - Incorrect. A `for` loop is used for iterative tasks and not suitable for this condition-based task.
+
+
+4. Which Golang control structure would be appropriate to handle a function that needs to close a file regardless of whether the rest of the function's operations succeed or fail?
+
+    A) if-else
+    - Incorrect. The `if-else` structure is used for conditional flow control, not for handling operations that need to be executed under all circumstances.
+ 
+    B) panic
+    - Incorrect. The `panic` structure is used to halt normal execution of the goroutine; it doesn't handle operations that need to be performed under all circumstances.
+    
+    C) defer
+    - Correct. The `defer` keyword in Golang is used to ensure an operation is executed at the end of a function regardless of whether other operations succeed or fail.
+
+
+5. You have a map in Go, and you need to print both the keys and their corresponding values. Which control structure would you use?
+
+    A) if-else inside a for loop
+    - Incorrect. Although the `if-else` statement can be used inside a loop, using it to iterate over a map isn't optimal or necessary.
+    
+    B) for-range loop
+    - Correct. A `for-range` loop would be the optimal choice for iterating over both keys and values in a map.
+    
+    C) defer statement
+    - Incorrect. The `defer` statement is used to delay the execution of a function or method or an anonymous function until the nearby functions return. It does not support iterating over a map.
