@@ -14,7 +14,7 @@ Page_name: What is parallelism and concurrency?
 
 2. How are concurrency and parallelism different in programming?
 
-   A) Concurrency organizes multiple tasks in a way that they seem to run all at once, while parallelism literally runs tasks simultaneously.
+   A) Concurrency organizes multiple tasks in a way that they seem to run simultaneously, while parallelism literally runs tasks simultaneously.
    - Correct. Concurrency is about dealing with a lot of things at once where parallelism is about doing a lot of things at once.
 
    B) Concurrency and parallelism mean the same thing.
