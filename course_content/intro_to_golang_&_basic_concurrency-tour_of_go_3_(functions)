@@ -1,0 +1,313 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: Tour of Go 3 (Functions)
+
+1. When might you want to use an anonymous function in Go?
+
+    A) When you want to define a new data type
+    - Incorrect. In Go, functions are not used for defining new data types. Anonymous functions are more typically used as arguments or when you need a one-off function that won’t be used elsewhere.
+
+    B) When you need a one-off function that won’t be used elsewhere
+    - Correct. Because anonymous functions don’t have a name by which they can be called later, they are typically used when you need a function at a particular point and won’t need it elsewhere.
+  
+    C) When you want to make your code more difficult to read
+    - Incorrect. While anonymous functions can potentially make code more difficult to read, this should not be a goal when writing code. It is correct to use them when you need a one-off function.
+
+2. You are passing a variable to a function and you need the function to alter the original variable. How would you accomplish this in Go?
+
+    A) Pass the variable’s value to the function and Go will automatically update the original
+    - Incorrect. Go by default, "passes by value". If you pass the value of a variable to a function, a copy is passed, and changes to the copy won't affect the original variable.
+  
+    B) Pass the variable by reference using a pointer
+    - Correct. By passing a pointer to the function, the function can indirectly access and change the original variable.
+  
+    C) This is impossible in Go
+    - Incorrect. It is entirely possible in Go to alter the original variable by using a pointer to pass the variable by reference.
+
+3. Consider this function signature: `func doSomething(a, b int, c string) (int, string)`. How would you call this function and ignore its returned string value?
+
+    A) `doSomething(1, 2, "something")`
+    - Incorrect. This way of calling the function will give both the returned int and string. If you want to ignore the string, use the blank identifier _.
+  
+    B) `doSomething(1, 2, "something")._`
+    - Incorrect. The ._ at the end is trying to get an attribute named _, but the correct syntax to ignore the string result is: `var1, _ := doSomething(1, 2, "something")`
+    
+    C) `var1, _ := doSomething(1, 2, "something")`
+    - Correct. Using _ as the variable name will effectively ignore the second return value.
+    
+4. You're defining a function that has both important and optional return values. How should you order these return values in Go?
+
+    A) Important values first, then optional
+    - Correct. Important return values should generally be placed before optional ones. That way, if a user of your function wants to ignore the optional ones, they can easily do so.
+  
+    B) Optional values first, then important
+    - Incorrect. If optional values are first, a caller who wants to ignore them and just get the important values will be inconvenienced.
+  
+    C) It doesn't matter, as long as the function documentation is clear
+    - Incorrect. While clear documentation is always important, good function design can also make your functions easier to use. In this case, putting important return values first simplifies things for callers.  
+
+5. How could you apply the concept of first-class functions in Golang?
+
+    A) By passing a function as a parameter to another function
+    - Correct. Golang supports first-class functions which means you can assign them to variables, use them as parameters to other functions and return them from other functions. 
+  
+    B) By defining a function inside another function
+    - Incorrect. While you can define a function inside another function this is not a feature of first-class functions. You are probably thinking of closure.
+  
+    C) By declaring a function as global
+    - Incorrect. Whether a function is declared as global or local is unrelated to the concept of first-class functions.
+
+1. What does a variadic parameter function in Go signify?
+
+    A) It's a function that permits parameters of any type.
+    - Incorrect, a variadic function allows for a variable number of arguments, but the type needs to be specified in the function signature.
+  
+    B) It denotes a function which is flexible with the number of parameters passed to it.
+    - Correct, a variadic function does not have a fixed number of arguments and can accept varying numbers based on the context.
+    
+    C) It refers to a function with an undefined return type.
+    - Incorrect, variadic pertains to function parameters and not the return type. The return type of a function has to be explicitly defined.
+
+
+2. What is the maximum number of variadic parameters that a Go function can have?
+
+    A) It can't have any variadic parameters
+    - Incorrect. Go supports variadic parameters in functions.
+    
+    B) Only one
+    - Correct. While a function can accept multiple parameters, it can only have one variadic parameter.
+    
+    C) Multiple variadic parameters
+    - Incorrect. A function can only have one variadic parameter.
+
+
+3. Where should a variadic parameter be placed in a Go function's definition?
+
+    A) The position of the variadic parameter doesn't matter as long as it's declared.
+    - Incorrect. A variadic parameter must always be positioned last in the function parameter list.
+    
+    B) A variadic parameter should be placed first.
+    - Incorrect. A variadic parameter should never be placed first, it needs to be the last parameter in the function's parameter list.
+    
+    C) A variadic parameter should always be placed last.
+    - Correct. The variadic parameter needs to be placed at the end of a function's parameter list, as it accepts varying numbers of arguments.
+
+
+4. How does Go handle a variadic parameter in the background?
+
+    A) As an array
+    - Incorrect. Internally, Go treats variadic parameters as slices and not as arrays.
+  
+    B) As a linked list
+    - Incorrect. Variadic parameters in Go are not linked lists, they're implemented as slices.
+    
+    C) As a slice
+    - Correct. Behind the scenes, Go deals with variadic parameters as slices.
+
+
+5. Given `func foo(args ...int)` and an array `a := [3]int{1,2,3}`, how would you pass 'a' to 'foo'?
+
+    A) Directly like this `foo(a)`
+    - Incorrect. Go requires an explicit conversion of an array to a slice using the "..." operator before it can be used as a variadic parameter.
+  
+    B) As `foo([]int(a)...)`
+    - Incorrect. It's necessary to convert the array to a slice, but this syntax is wrong. You should use the "..." operator directly on the array like so `foo(a[:]...)`.
+    
+    C) Like this `foo(a[:]...)`
+    - Correct. You should convert the array to a slice using the slice operation 'a[:]', and then pass it as variadic parameter with the "..." operator.
+    
+
+6. Consider `func average(nums ...float64) float64`. Which of the following calls is incorrect?
+
+    A) `average(1.2, 2.3, 3.4)`
+    - Incorrect. This is a valid way to call the function by passing individual float elements.
+
+    B) `average([]float64{1.2, 2.3, 3.4}...)`
+    - Incorrect. This is a correct way to call the function by passing a slice of float64 with the "..." operator.
+    
+    C) `average([]float64{1.2, 2.3, 3.4})`
+    - Correct. This is an incorrect way to call the function as you're trying to pass a slice without the "..." operator.
+
+7. Given `func display(names ...string)`, what does 'names' represent inside the function?
+
+    A) An array of strings
+    - Incorrect. Inside the function, 'names' is treated as a slice of strings, not an array.
+    
+    B) A Slice of strings 
+    - Correct. Inside the function, 'names' is treated as a slice of strings.
+    
+    C) A map of strings
+    - Incorrect. Inside the function, 'names' is clearly defined as a slice of strings, not a map.
+
+
+8. Given `func addToSlice(slice...int, num int)`, is it a valid function definition?
+
+    A) Yes
+    - Incorrect. The variadic parameter must be the last parameter in the function signature.
+    
+    B) No, because the variadic parameter is not the last parameter 
+    - Correct. The variadic parameter needs to always be the last one in the function signature, any other order would result in a compilation error.
+    
+    C) No, because 'num' should come first 
+    - Incorrect. Where 'num' is placed not the issue here. It's about the variadic parameter needing to be the last one in the list of function parameters.
+
+
+9. What will happen when calling a variadic function in Go without passing any arguments?
+
+    A) An error will occur
+    - Incorrect. It's completely valid to call a variadic function without passing any arguments.
+    
+    B) It will run perfectly fine
+    - Correct. It's perfectly valid to call a variadic function with zero arguments.
+    
+    C) Only the first call to the function will succeed
+    - Incorrect. You can call a variadic function with zero arguments as many times as you need.
+
+
+10. Given `func sum([]int{1, 2, 3}...)`, what does the "..." operator do?
+
+    A) It separates each element in the slice into individual parameters
+    - Correct. The "..." operator in this context breaks up the elements in the slice, so they can be read as individual arguments to the function.
+    
+    B) It creates a new slice
+    - Incorrect. The "..." operator in this context does not create a new slice, but splits the elements of an existing slice into discrete arguments.
+    
+    C) It executes some calculation before the function call
+    - Incorrect. The "..." operator does not carry out any arithmetic operation. It simply splits the elements of a slice to be read as individual function arguments.
+
+1. What is a Closure in Go?
+
+    A) A special technique for packaging and sending code.
+    - Incorrect. Closures are not about packaging or sending code. They are about functions keeping access to variables from their outer function even after the outer function has finished execution.
+  
+    B) A function value which references variables from outside of its body.
+    - Correct. Closures are function instances that reference variables from outside their own scope. 
+
+    C) An object-oriented technique for encapsulation in Go.
+    - Incorrect. Closures are a concept from functional programming, not object-oriented programming.
+
+2. In the below Go code snippet, is the function `addTo` creating closure?
+
+```go
+func addTo(a int) func(int) int {
+    return func(b int) int {
+        return a + b
+    }
+}
+```
+
+    A) Yes, the function `addTo` creates a closure.
+    - Correct. The `addTo` function does create a closure because the nested function has access to a variable (`a`) from its enclosing function.
+
+    B) No, the function `addTo` does not create a closure.
+    - Incorrect. The `addTo` function creates a closure, where the nested function has access to a variable (`a`) from its enclosing function.
+
+    C) Yes, the function `addTo` creates a closure but the code will fail to compile.
+    - Incorrect. Not only would this code compile, but the `addTo` function creates a closure properly with the nested function referencing an outside variable (`a`).
+
+3. Consider the below Go code snippet, which of these statement is correct about the `counter` function?
+
+```go
+func counter() func() int {
+    count := 0
+    return func() int {
+        count++
+        return count 
+    }
+}
+```
+
+    A) The function `counter` returns a function which does not have access to `count`.
+    - Incorrect. In the `counter` function, the returned function does in fact have access to `count` which is outside of its scope.
+
+    B) The variable `count` will persist between calls to the function returned by `counter`.
+    - Correct. In the `counter` function, the variable `count` will persist across multiple calls to the returned function. 
+
+    C) The variable `count` will reset to 0 for each call to the function returned by `counter`.
+    - Incorrect. In Go, the `count` variable does persist across multiple calls. It's a key feature of closures.
+
+As previously, follow with questions 4-10. Make sure they vary in complexity and deal with different aspects of closures in Go, from their theoretical basis to practical uses, and always provide an appropriate explanation for the correct answer and the incorrect alternatives.
+
+1. What is the primary purpose of anonymous functions in Go?
+
+    A) To allow functions to be declared without a name for use throughout the program
+    - Incorrect. Anonymous functions are typically used for limited-scope functionality and are not meant to be used throughout an entire program. 
+   
+    B) To facilitate local, limited-scope functionality that won't be reused elsewhere
+    - Correct. This is the primary motive for utilizing anonymous functions in Go. It allows for localized, specific use functions.
+   
+    C) To enable the creation of global variables
+    - Incorrect. Anonymous functions don't relate to the creation of global variables. Their primary use is to provide localized functionality.
+
+2. When implementing an anonymous function with Immediately Invoked Function Execution (IIFE) in Go, which of the following code snippets is correct?
+
+    A) 
+    ```go
+    func(){
+        fmt.Println("Hello World")
+    }()
+    ```
+    - Correct. This is the correct syntax for an IIFE in Go. The function is defined and then immediately called by appending '()' to the end. 
+
+    B) 
+    ```go
+    func(){
+        fmt.Println("Hello World")
+    }
+    ```
+    - Incorrect. This only defines an anonymous function but does not call it immediately. An IIFE should be called in the same line where it is defined.
+
+    C) 
+    ```go
+    func(){
+        fmt.Println("Hello World")
+    }()
+    ```
+    - Incorrect. This code snippet is identical to option A. Duplicate options don't help in assessing understanding.
+
+3. Suppose we have two functions: an outer function and an anonymous inner function. Which of the following statements about variable scope is true in Go?
+
+    A) The anonymous function can only access its own variables.
+    - Incorrect. This is a common misconception but in fact, an anonymous function has access to variables from its containing function's scope as well due to lexical scoping in Go.
+
+    B) The anonymous function can access both its own variables and those of the outer function.
+    - Correct. This statement accurately describes lexical scoping in Go, an anonymous function does have access to variables in its containing function's scope.
+
+    C) The outer function can access variables from the anonymous function.
+    - Incorrect. The outer function cannot access the inner function's variables. This is a common misunderstanding of how scoping works in Go.
+
+4. In Go, how could you assign an anonymous function to a variable?
+
+    A) 
+    ```go
+    myFunc := func(){
+        fmt.Println("Hello World")
+    }
+    ```
+    - Correct. This is the syntax to assign an anonymous function to a variable in Go. 
+
+    B) 
+    ```go
+    var myFunc func() = {
+        fmt.Println("Hello World")
+    }
+    ```
+    - Incorrect. This is an incorrect syntax. The function keyword cannot be omitted when assigning an anonymous function to a variable.
+
+    C) 
+    ```go
+    myFunc func() = {
+        fmt.Println("Hello World")
+    }
+    ```
+    - Incorrect. This is again the wrong syntax. While the function keyword is correctly used here, the assignment syntax in Go uses ':=' for shorthand assignment when the variable is not already declared.
+
+5. Is it possible to have an Immediately Invoked Function Expression (IIFE) assigned to a variable?
+
+    A) No, because an IIFE is invoked as soon as it is defined 
+    - Correct. IIFEs cannot be assigned to variables because they are invoked as soon as they are defined.
+
+    B) Yes, because all functions, including IIFEs, can be assigned to variables
+    - Incorrect. While it's true that functions can be assigned to variables in Go, this does not apply to IIFEs due their immediate invocation.
+
+    C) Only if the variable is global
+    - Incorrect. Whether a variable is local or global has no impact on the possibility of assigning an IIFE to it, as an IIFE cannot be assigned to a variable due to its immediate invocation after definition.
