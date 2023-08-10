@@ -4,13 +4,13 @@ Page_name: What is parallelism and concurrency?
 1. What does parallel programming achieve in terms of tasks?
 
     A) It allows the same task to be repeated multiple times.
-    - Incorrect. Repetition of a task does not signify parallel programming. It's about executing different tasks simultaneously.
+    - Incorrect. Repetition of a task does not signify parallel programming.
 
     B) It allows tasks to be executed one after the other.
     - Incorrect. This concept represents sequential programming, not parallel programming. Sequential programming is where tasks are run one after the other.
 
     C) It allows multiple tasks to be executed simultaneously.
-    - Correct. Parallel programming is about executing multiple tasks at once. It maximizes the use of CPU by doing multiple things at the same time.
+    - Correct. Parallel programming is about executing multiple tasks at once. It is commonly achieved by having multiple cores of a CPU execute different parts of the program simultaneously. You can think of CPU cores as independent processing units.
 
 2. How are concurrency and parallelism different in programming?
 
