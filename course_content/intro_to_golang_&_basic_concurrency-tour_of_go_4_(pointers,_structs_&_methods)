@@ -1,0 +1,259 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: Tour of Go 4 (Pointers, structs & methods)
+
+1. What is the chief reason for using pointers in Go language?
+
+    A) To store and retrieve actual values from memory
+    - Incorrect. While pointers do store memory addresses that can hold values, it's not their main purpose. Consider how variables' states can be maintained across functions.
+      
+    B) To influence data within a function, allowing changes to be globally reflected
+    - Correct. Pointers can be used to make changes to a variable from within functions, helping maintain the variable's state across your code.
+
+    C) To enhance execution speed of code by accessing variables directly from memory
+    - Incorrect. While accessing from memory can be faster, the main purpose of pointers is to allow manipulations on the global state of a variable. How does that work?
+
+2. Given `*p int`, what does the '*' signify in Go?
+
+    A) It's an operator to multiply a variable with a subsequent variable
+    - Incorrect. In arithmetical contexts '*' is a multiplication operator, but in Go's pointer context, it has a different use. What could that be?
+      
+    B) It's a syntax to declare a pointer to an int type
+    - Correct. The '*' signifies a pointer declaration. In this case, we're declaring 'p' as a pointer to an int.
+      
+    C) It's used to declare a variable whose value can't be changed (constant variable)
+    - Incorrect. It's true that Go has constant variables, however, '*' is not used for this purpose. What's the primary purpose of '*' in declaring a variable?
+
+3. In the Go code `var p = &x;`, what does the '&' operator do?
+
+    A) It performs a logical AND operation on 'p' and 'x'
+    - Incorrect. While '&' is indeed a bitwise AND operator in many contexts, in this context, it has a different role. Consider what it might be.
+      
+    B) It retrieves the memory address of the variable 'x' and assigns it to 'p'.
+    - Correct. Using '&' before a variable lets you access its memory address, useful when we want to create pointers.
+      
+    C) It checks if 'x' is non-zero and assigns result to 'p'.
+    - Incorrect. The operator '&' doesn’t perform zero checks. It has a special role when used with variables. Can you identify that role?
+
+4. Consider this piece of code: `var x = 10; var p = &x; *p = 20; fmt.Println(x)`. What does this code print?
+
+   A) The original value of x, which is 10
+   - Incorrect. The 'p' variable, being a pointer, can modify the original 'x' value. What did it change 'x' to?
+   
+   B) The new value of x, which is 20
+   - Correct. The line of '*p = 20' assigns 20 to the memory space p points at, which is also where 'x' is stored. Therefore, 'x' changes to 20.
+   
+   C) An error message, because you cannot modify 'x' through '*p'.
+   - Incorrect. 'p' is a pointer to 'x', therefore any modification on '*p' directly influences 'x'. What does this tell you about pointers and variable states?
+
+5. What happens if you attempt to access a nil pointer in Go?
+
+    A) The memory access returns a nil value
+    - Incorrect. While in some languages nil reference access may yield a null value, Go behaves differently. Can you recall what it does?
+       
+    B) Go automatically creates a new non-nil pointer on access
+    - Incorrect. A programming language cannot automatically allocate memory to point at. Instead, in Go, it signals a problem when trying to access a nil pointer. What is it?
+      
+    C) Go throws a runtime panic signal
+    - Correct. If you try to access the memory location of a nil pointer in Go, it causes a runtime panic, terminating the program. This is a scenario best avoided in coding practices.
+
+1. Consider the following snippet of Go code:
+   ```go
+   type Person struct {
+     name string
+     age  int
+   }
+   var john Person
+   ```
+   What will the value of `john.name` and `john.age` be immediately after this code executes?
+
+    A) `john.name` is `""` and `john.age` is `0`.
+    - Correct. The fields of a struct are automatically initialized to their zero value, which is `""` for strings and `0` for integers.
+  
+    B)  `john.name` is `nil` and `john.age` is `nil`.
+    - Incorrect. The `nil` value is specific to pointers, slices, maps, channels, functions and interfaces. The zero value for `john.name` and `john.age` is applicable here.
+  
+    C)  The program will throw an error because the values were not initialized.
+    - Incorrect. Go does not require explicit initialization of struct fields as they are given 'zero' values respective to their types.
+
+---
+
+2. When a struct `A` has a field of another struct `B`, this concept is referred to as what?
+
+    A) Struct Inheritance
+    - Incorrect. Go doesn't support inheritance the way object-oriented languages like Java or Python do. However, it does have composition which allows you to use structs within other structs.
+  
+    B)  Nested Structs
+    - Correct. The concept of defining a struct within another struct is referred as nested structs.
+  
+    C)  Struct Delegation
+    - Incorrect. There isn't a concept called 'Struct Delegation' in Go. You might be conflating it with the delegation pattern in object-oriented programming.
+
+---
+
+3. The following Go code has an error. What is it?
+   ```go
+   type Employee struct {
+     name   string
+     salary int
+   }
+   
+   func (e Employee) displaySalary() int {
+     return e.salary
+   }
+   
+   func main() {
+     bob := Employee{name: "Bob", salary: 1000}
+     fmt.Println("Bob's salary: ", bob.displaySalary)
+   }
+   ```
+    A) The `displaySalary` method can't be attached to a struct.
+    - Incorrect. Methods can indeed be attached to structs in Go, which is done by using a receiver parameter in the function definition.
+  
+    B)  The `displaySalary` method should be called with parentheses: `bob.displaySalary()`.
+    - Correct. In Go, methods must be called with parentheses, even if they don't take any arguments. So it should be `bob.displaySalary()`.
+  
+    C)  The `Employee` struct doesn't have a `displaySalary` field.
+    - Incorrect. While it's true that `Employee` struct does not have a `displaySalary` field, the error in the code originates from incorrect method call, not from struct field declaration.
+
+---
+
+4. Assume you need a struct with a lot of fields, out of which only a few need to be initialized. What is the efficient way to declare and initialize the struct?
+
+    A) By declaring and initializing the needed fields only, using a struct literal.
+    - Correct. Struct literals allow you to initialize only the required fields. The other fields will take their zero value.
+  
+    B)  By declaring the fields one by one, and initializing them later.
+    - Incorrect. While this approach is possible, using a struct literal is more efficient as it allows uninitialized fields to take on their 'zero' values automatically.
+  
+    C)  By declaring an array of structs.
+    - Incorrect. Creating an array of structs won't necessarily make declaration and initialization more efficient. The task mentioned declaring a single struct, not multiple ones.
+
+---
+
+5. In the following code, which operation would change `john`'s age to `25`? 
+   ```go
+   type Person struct {
+     name string
+     age  int
+   }
+   john := Person{name: "John", age: 20}
+   ```
+   
+    A) `john.age := 25`
+    - Incorrect. The `:=` operator isn't used for re-assignment. It is used for declaration and assignment concurrently.
+    
+    B)  `john(age) = 25`
+    - Incorrect. Parentheses are used for function or method calls, not struct field assignment. 
+  
+    C)  `john.age = 25`
+    - Correct. The dot operator is used to access and change the fields of a struct.
+
+1. When defining a method in Golang, where is the receiver placed?
+
+    A) Before the function name.
+    - Correct. In Go, the receiver `(t TypeName)` comes before the function name, which differentiates the method declaration from regular function declarations.
+  
+    B) After the function name.
+    - Incorrect. The receiver in Golang is placed before the function name, not after. It comes right after the "func" keyword.
+
+    C) At the end of the function.
+    - Incorrect. The receiver is not placed at the end of the function. In Go, it's located before the function name.
+
+2. Given the following method definition in Go: `func (p *Person) sayHello() { p.Name = "Hello, " + p.Name }`. How would you call this method for a `Person` instance named `john`?
+
+    A) `john.sayHello()`
+    - Correct. In Go, you can call a method on a type instance using the dot notation like `instance.method()`. Even though the receiver is a pointer, Go automatically handles the reference.
+  
+    B) `sayHello(john)`
+    - Incorrect. This syntax is usually used for calling functions in Go, not methods. For methods, you should use the type instance and dot notation.
+ 
+    C) `*Person.sayHello(john)`
+    - Incorrect. This syntax is not valid for calling methods in Go. You do not need to explicitly de-reference a method receiver. 
+
+3. If you define a method with a value receiver, what happens when you modify the receiver within the method?
+
+    A) The modifications are reflected on the original type.
+    - Incorrect. This is not the case with value receivers. They operate on a copy of the original type, not the type itself. Therefore, any changes made to the receiver inside the method will not be reflected on the original type.
+
+    B) The modifications are not reflected on the original type.
+    - Correct. The method operates on a copy of the original type, so modifications inside the method will not be reflected on the original type.
+
+    C) The method returns an error.
+    - Incorrect. The method doesn't return any error in this context. But changes made to the receiver will not affect the original type.
+
+4. Consider the following code snippet: `type Student struct {Name string}; func (s Student) changeName(newName string) {s.Name = newName}`. When `changeName` is invoked on a `Student` instance, why doesn't the student's name change?
+
+    A) Because the method is incorrectly defined.
+    - Incorrect. The method is correctly defined. However, because we're using value receivers, the changes don't reflect on the original instance.
+  
+    B) Because Student uses a value receiver in its method.
+    - Correct. The value receiver method operates on a copy of the original Student instance. So changes made inside the method will not reflect on the original instance.
+
+    C) Because the new name is not correctly set.
+    - Incorrect. The name assignment in the method is correct but the changes made won't reflect on the original instance due to the method's value receiver.
+
+5. Given the following struct `type Coordinate struct {X, Y int}`. How could you define a method `reset` that sets the values of X and Y to zero?
+
+    A) `func (c Coordinate) reset() {c.X, c.Y = 0, 0}`
+    - Incorrect. This definition will not lead to changes on the original Coordinate object due to the nature of value receivers.
+
+    B) `func (c *Coordinate) reset() {c.X, c.Y = 0, 0}`
+    - Correct. This definition will allow modifications on the original Coordinate instance as pointer receivers give you access to the original instance.
+
+    C) `func reset(c Coordinate) {c.X, c.Y = 0, 0}`
+    - Incorrect. This is a function definition, not a method definition. Receiver is missing before the function name. 
+
+6. When can pointer receivers be more efficient than value receivers?
+
+    A) When passing lightweight, simple types.
+    - Incorrect. For lightweight, simple types, the impact on memory relating to copying for value receivers is minimal. For large, complex types, however, pointer receivers can be more efficient.
+  
+    B) When passing large, complex types.
+    - Correct. Pointer receivers don't need to create a copy of the original, potentially large instance, which makes them more memory efficient for large types.
+
+    C) There is no difference.
+    - Incorrect. There is a significant difference in memory impact when dealing with large type instances.
+
+7. What does it mean that "Go automatically handles conversion of values to pointers for method calls"?
+
+    A) It converts all values to pointers when a method is called.
+    - Incorrect. It only converts values to pointers if the method has a pointer receiver.
+
+    B) It converts a value to a pointer if the method has a pointer receiver.
+    - Correct. If a method has a pointer receiver, Go can automatically convert the passed value to a pointer, facilitating the method call.
+
+    C) It ensures that all methods are callable with either pointers or values.
+    - Incorrect. Whether a method can be called with a value or a pointer largely depends on the method receiver. If it's a value receiver, both values and pointers can be used. If it's a pointer receiver, values can still be used due to Go's automatic conversion, but changes will not affect the original value.
+
+8. When is it more suitable to use a value receiver over a pointer receiver?
+
+    A) When the method needs to operate on a copy of the value not the value itself.
+    - Correct. Value receivers operate on a copy of the declaring type. So, when the original value should not be changed, one should use a value receiver.
+  
+    B) When the method should modify the receiver.
+    - Incorrect. If a method should modify the receiver, a pointer receiver should be used.
+
+    C) When the receiver is a large struct.
+    - Incorrect. For a large struct, a pointer receiver is more efficient because it does not create a copy.
+
+9. If a type is defined in `package main`, can you define a method for this type in `package util`?
+
+    A) Yes, methods can be defined in any package.
+    - Incorrect. In Go, methods can only be defined in the same package where the receiver type is defined.
+  
+    B) No, methods must be defined in the same package as the receiver type.
+    - Correct. In Go, the receiver type and the method must be defined in the same package.
+
+    C) It depends on the type.
+    - Incorrect. Regardless of the type, methods must be defined in the same package as the receiver type in Go.
+
+10. Consider the following function in Go: `func echo(c string) { fmt.Println(c) }`. Could this function be converted into a method by adding a receiver?
+
+    A) No, because it's a function.
+    - Incorrect. Functions in Go can be converted to methods by adding a receiver between the `func` keyword and the function name.
+
+    B) Yes, by adding a proper receiver.
+    - Correct. Adding a receiver before the function name would turn this function into a method.
+
+    C) Yes, but only with a pointer receiver.
+    - Incorrect. It can be converted into a method with either a value receiver or a pointer receiver. The choice of receiver would depend on whether you want to reflect mutations on the receiver back to the caller.
