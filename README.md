@@ -71,7 +71,7 @@ Optionally, you can assign additional people to review the questions.
 
 When the review step is done, you are ready to add the page to Torus.
 
-> *For multiple uses, the branch corresponding to each pull request needs to be deleted.* 
+> *To regenerate a page, delete the automatically generated branch corresponding to the page. After that, run the action again.* 
 
 ### 4. Adding the pages to Torus
 
