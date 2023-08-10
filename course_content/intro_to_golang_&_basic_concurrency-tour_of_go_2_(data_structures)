@@ -1,0 +1,59 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: Tour of Go 2 (Data structures)
+
+1. Which of the following is the correct way to declare an array, `arr`, in Golang that can hold 5 integer elements?
+
+    A) `var arr [5]int`
+    - Correct. This is the correct syntax in Go for declaring an array with 5 integer elements.
+
+    B) `int arr[5]`
+    - Incorrect. This is the syntax you might be used to if you're coming from a language like C++. In Go, the variable type comes after the variable name and size.
+
+    C) `arr := [int 5]`
+    - Incorrect. The colon is only needed when you're initializing the array with values. Additionally, the syntax for the type is incorrect here.
+
+2. How can you access the 3rd element of an array `arr` in Golang?
+
+    A) `arr[3]`
+    - Incorrect. In Go, as in most programming languages, arrays have zero-based indices. Therefore, the index you want is 2, not 3.
+
+    B) `arr[2]`
+    - Correct. Given that arrays are zero-indexed, the 3rd element, is indeed at index 2.
+
+    C) `arr.get(2)`
+    - Incorrect. This could be a misunderstanding from a language like Java that has get methods. In Go, you simply use the bracket notation.
+
+3. Given `var sliceName []T` in Go, what's a crucial feature of slices compared to arrays?
+
+    A) Slices can only be declared, not initialized.
+    - Incorrect. This not correct. Slices, like arrays, can be both declared and initialized with values.
+
+    B) Slices can be resized, but the size of an array is fixed.
+    - Correct. This is an essential feature of slices in Go and one of the main reasons they're often used over arrays.
+
+    C) Slices cannot store more than 10 items.
+    - Incorrect. There's no intrinsic limitation on the number of items that a slice can store. The size of the slice can be changed dynamically as needed.
+
+4. If you're declaring a map in Golang that has string keys and integer values, which would you use?
+
+    A) `var mapName map[int]string`
+    - Incorrect. This would be a map with integer keys and string values. Remember, the key type comes first.
+
+    B) `map[string]int mapName`
+    - Incorrect. This might seem valid if you're used to a language like TypeScript, but in Go the variable name comes before the type.
+
+    C) `var mapName map[string]int`
+    - Correct. This is how we declare a map with string keys and integer values in Go.
+
+5. Considering the map `fruitCount`, how would you access the value associated with the key "apple"?
+
+    A) `fruitCount.get("apple")`
+    - Incorrect. You may think of using a get method if you're coming from a language like JavaScript, but in Go, it's simply bracket notation.
+
+    B) `fruitCount("apple")`
+    - Incorrect. This resembles a function call - but you need to use bracket notation for access.
+
+    C) `fruitCount["apple"]`
+    - Correct. This is the correct way to access the value with the key "apple" from `fruitCount` in Go.
+
+Designing effective QBL questions takes time and understanding of common misconceptions as well as known tricky areas for the skill at hand. Each question should engage the student and lead them towards an independent understanding of the topic.
