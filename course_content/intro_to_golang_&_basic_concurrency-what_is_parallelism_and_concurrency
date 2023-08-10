@@ -1,0 +1,112 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: What is parallelism and concurrency?
+
+1. What does parallel programming achieve in terms of tasks?
+
+    A) It allows the same task to be repeated multiple times.
+    - Incorrect. Repetition of a task does not signify parallel programming. It's about executing different tasks simultaneously.
+
+    B) It allows tasks to be executed one after the other.
+    - Incorrect. This concept represents sequential programming, not parallel programming. Sequential programming is where tasks are run one after the other.
+
+    C) It allows multiple tasks to be executed simultaneously.
+    - Correct. Parallel programming is about executing multiple tasks at once. It maximizes the use of CPU by doing multiple things at the same time.
+
+2. How are concurrency and parallelism different in programming?
+
+   A) Concurrency organizes multiple tasks in a way that they seem to run all at once, while parallelism literally runs tasks simultaneously.
+   - Correct. Concurrency is about dealing with a lot of things at once where parallelism is about doing a lot of things at once.
+
+   B) Concurrency and parallelism mean the same thing.
+   - Incorrect. Although they may seem similar because they both deal with multiple tasks, concurrency and parallelism have distinct definitions and uses in programming. 
+
+   C) Parallelism structures tasks so they appear to run all at once, while concurrency actually runs tasks at the same time.
+   - Incorrect. Concurrency is actually about dealing with multiple things at once, while parallelism achieves the actual simultaneous execution of tasks. 
+
+3. In which scenario is sequential programming most suitable?
+
+   A) When multiple independent tasks need to be performed.
+   - Incorrect. Independent tasks are better handled by either parallel or concurrent programming. These methods allow tasks to run simultaneously, improving efficiency.
+
+   B) When new tasks depend on the results of previous tasks.
+   - Correct. Sequential programming is the best option for tasks that depend on each other. In this model, tasks are run one after the other.
+
+   C) When there are tasks that have no relation to each other.
+   - Incorrect. Unrelated tasks can be handled more efficiently with concurrent or parallel programming which allows simultaneous execution.
+
+4. How does Go (Golang) manage concurrent programming?
+
+   A) Go uses principles of object-oriented programming such as classes and objects.
+   - Incorrect. While object-oriented programming is a popular paradigm, Go is not considered an object-oriented language and uses a different method for managing concurrency.
+
+   B) Go uses Goroutines and Channels.
+   - Correct. Go provides built-in support for concurrent programming using Goroutines and Channels. 
+
+   C) Go adopts the multiple inheritance approach.
+   - Incorrect. Multiple inheritance is a feature associated with languages like C++, not Go. Go handles concurrency using Goroutines and Channels.
+
+5. What is the role of Goroutines in Go (Golang)?
+
+   A) Goroutines are synonymous with threads.
+   - Incorrect. Goroutines are not threads. They are functions or methods that are capable of running concurrently with other functions.
+
+   B) Goroutines are a form of classes in Go.
+   - Incorrect. Goroutines are not classes. Go doesn't follow the traditional class-object structure as seen in object-oriented languages.
+
+   C) Goroutines are functions that can run concurrently with other functions.
+   - Correct. A Goroutine is a function or method that runs concurrently with others. Multiple Goroutines can run at the same time, facilitating concurrency.
+
+6. How can you initiate a Goroutine in Go (Golang)?
+
+   A) Using the `go` keyword before making a function call.
+   - Correct. Adding the `go` keyword before a function call initiates a Goroutine. 
+
+   B) Using the `thread.start` function.
+   - Incorrect. This is more applicable to languages like Java, which feature thread-based concurrent programming.
+
+   C) Using the `new Goroutine` syntax.
+   - Incorrect. This syntax is not valid in Go. The correct way to begin a Goroutine is by adding the `go` keyword before a function call.
+
+7. Which of the following best describes a Channel in Go?
+
+   A) It's simply a type of data.
+   - Incorrect. Although a Channel does contain data, it serves a purpose beyond being just a holder of data. It is designed to facilitate communication between Goroutines.
+
+   B) A Channel acts as a conduit for communication between Goroutines.
+   - Correct. A Channel in Go is a medium through which Goroutines communicate. It ensures the safe exchange of data.
+
+   C) A Channel is a function that is executed by Goroutines.
+   - Incorrect. A Channel itself is not a function. It is a construct that allows Goroutines to communicate data safely.
+
+8. In Go (Golang), how do you utilize Channels?
+
+   A) Channels are created using the `chan` keyword.
+   - Correct. Channels in Go are derived using the `chan` keyword, followed by the type of data the Channel will be holding.
+
+   B) Channels are initiated with the `channel.start` function.
+   - Incorrect. This syntax is not valid in Go. In Go, Channels are created with the `chan` keyword.
+
+   C) Channels are created using the `channel` keyword.
+   - Incorrect. The `channel` keyword does not exist in Go. Channels are created by the `chan` keyword.
+
+9. What is the recommended method for enabling communication between Goroutines?
+
+   A) Shared variables can be used for communication.
+   - Incorrect. While it's technically possible to use shared variables, it creates the potential for race conditions and is not recommended.
+
+   B) Channels should be used to allow communication between Goroutines.
+   - Correct. Channels provide a safe way for Goroutines to share data, ensuring that all data exchanges happen in a controlled and orderly manner.
+
+   C) Shared memory is best for communication between Goroutines.
+   - Incorrect. Shared memory without proper synchronization can result in race conditions, making it an unsafe choice for communication between Goroutines.
+
+10. Is it necessary to always control the order of execution in Goroutines?
+
+   A) Yes, because proper order is crucial.
+   - Incorrect. There might be some scenarios where order of execution doesn't matter. For instance, when all tasks are independent of each other.
+
+   B) No, order of execution is never important.
+   - Incorrect. While Goroutines provide a way to handle tasks concurrently, there are instances where order of execution becomes crucial.
+
+   C) The need to control order of execution depends on specific requirements.
+   - Correct. Depending on the problem at hand, there might be times when controlling the order of execution is vital, while there would be other times when it isn't.
