@@ -23,7 +23,7 @@ Page_name: Setting up Go
    C) `mod.go`, which contains the main function
    - Incorrect. `mod.go` is not the file created during module initialization. Go uses a specific file to maintain the module details.
 
-3. Looking at the following code, what does `go.mod` do in this context?
+3. Looking at the following code, what does `go.mod` file do in this context?
 
 ```go
 module github.com/my/repo
@@ -39,7 +39,7 @@ require (
    A) It specifies the version of Go used in the project
    - Incorrect. Although `go.mod` specifies the language version "go 1.14", it serves a broader purpose in a module.
    
-   B) It defines the module path and its dependencies
+   B) It defines the module path, the project's dependencies, and the Go version
    - Correct. The `go.mod` file defines the module path, the Go version, and all the dependencies required by the project.
    
    C) It is the main script that runs the module
