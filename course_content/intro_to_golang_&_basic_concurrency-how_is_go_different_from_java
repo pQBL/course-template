@@ -1,0 +1,159 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: How is Go different from Java?
+
+1. Look at this code snippet. What does it highlight as a unique feature in Go compared to Java?
+
+```
+go func() {
+    fmt.Println("Hello from a goroutine!")
+}()
+```
+
+   A) The use of exceptions.
+    - Incorrect. This code snippet doesn't show anything related to exceptions but is showing a significant feature of Go.
+      
+   B) The function passing mechanism.
+    - Incorrect. While it does show a function, it isn't highlighting function passing but a significant concurrent feature of Go.
+     
+   C) The use of goroutines.
+    - Correct. The "go" keyword before the function indicates a goroutine, which is a unique feature in Go for handling light weight concurrency.
+
+2. When handling errors in Go and Java, which of the following statements is true?
+
+   A) Go uses the `try-catch` block mechanism.
+    - Incorrect. The `try-catch` mechanism is used in Java, not in Go.
+  
+   B) Go relies on explicit error handling by returning an error as a separate return value.
+    - Correct. Go handles error differently than Java, instead of throwing exceptions, it uses explicit error return values.
+    
+   C) Go encapsulates all errors in an object and throws them.
+    - Incorrect. This option is mirroring Java's error handling mechanism, not Go's.
+
+3. Consider the code snippets from Go and Java:
+
+Go:
+```
+type Circle struct {
+    Radius float64
+}
+ 
+func (c Circle) Area() float64 {
+    return math.Pi * c.Radius * c.Radius
+}
+```
+
+Java:
+```
+public class Circle {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}
+```
+
+What difference in these languages does the code illustrate?
+
+   A) The syntax for defining functions.
+    - Incorrect. While the syntax is indeed different, the code is more significantly highlighting how Go associates methods with types.
+  
+   B) The way methods are associated with types.
+    - Correct. The Go code shows a method `Area` associated with the struct `Circle`, illustrating how Go allows methods to be associated with any type, unlike Java's class-based methods.
+   
+   C) The way Go supports overloading.
+    - Incorrect. Neither script demonstrates overloading, and in fact, Go does not support method/value overloading.
+
+4. How is memory managed in Go and Java?
+
+   A) Both use automatic garbage collection to reclaim memory.
+    - Correct. Both Go and Java utilize automatic garbage collection to manage memory freeing developers from manual memory management tasks.
+  
+   B) Go uses manual memory management.
+    - Incorrect. Unlike languages such as C++, Go uses automatic garbage collection to manage memory.
+  
+   C) Java uses reference counting for memory management.
+    - Incorrect. While this is true for some languages like Python, Java uses a garbage collector not reference counting.
+
+5. What feature of Go is illustrated by this code snippet?
+
+```
+type Shape interface {
+    Area() float64
+}
+```
+
+   A) The concept of classes.
+    - Incorrect. Go does not have classes, instead, it uses structs.
+  
+   B) The use of interfaces to achieve polymorphism.
+    - Correct. In Go, interfaces are used as a method to achieve polymorphism, as shown in the code snippet.
+   
+   C) The use of inheritance in Go.
+    - Incorrect. Go does not support inheritance, it uses composition as shown by the use of interfaces.
+
+6. How do Go and Java treat arrays differently?
+
+   A) Array sizes in Go are dynamic like in Java.
+    - Incorrect. Unlike Java that can have dynamic array sizes, Go assigns a specific size to arrays at the time of declaration.
+  
+   B) Go arrays are passed by reference.
+    - Incorrect. Go by default passes arrays by value rather than by reference.
+  
+   C) Go arrays are of a fixed size.
+    - Correct. Go's approach to arrays is different from that of Java – Go arrays have a fixed size determined at the time of declaration.
+
+7. Why is the use of Generics limited in Go compared to Java?
+
+   A) Go has enforced strict typing, therefore generics aren’t needed.
+    - Incorrect. While Go is a statically typed language, this doesn't relate to the lack of generics. It's more about design decisions regarding type safety and simplicity.
+  
+   B) Go does not currently have built-in support for Generics.
+    - Correct. Go does not have support for generics, although this could change in the future.
+  
+   C) Generics can cause runtime errors, which Go seeks to avoid.
+    - Incorrect. This is a misunderstanding of the purpose of generics. The lack of generics in Go is related to design decisions, not a concern about runtime errors.
+
+8. How is data encapsulation different in Go from Java?
+
+   A) Go does not provide any data hiding, everything is public.
+    - Incorrect. While Go doesn't use classes, it does provide mechanisms for data hiding by making identifiers unexportable if they start with a lower-case letter.
+  
+   B) Go uses private and public keywords for data encapsulation.
+    - Incorrect. Go does not use `private` and `public` keywords for data hiding. It uses upper-case initial letters for exportable identifiers and lower-case for unexportable identifiers.
+  
+   C) Go uses capitalized and lowercase initial letters for exportable and unexportable identifiers.
+    - Correct. Go uses capitalized initial letters for exportable identifiers (visible outside the package they are defined in) and lowercase for unexportable identifiers.
+
+9. What does the following Go code illustrate about error handling that's different from Java?
+
+```
+file, err := os.Open("filename.ext")
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+   A) Go's use of nil errors to signify no error occurred.
+    - Incorrect. Although Go does return `nil` when no error has occurred, the code primarily illustrates the explicit handling and checking of errors, which is different from Java's `try-catch` paradigm.
+  
+   B) Go's equivalent for Java's `FileNotFoundException`.
+    - Incorrect. The `os.Open` function may result in file-related errors, but this code primarily illustrates explicit error handling, not the correspondence to specific Java exceptions.
+  
+   C) Go's approach to explicit error checking.
+    - Correct. This code illustrates how Go uses explicit error checking with error return values, which is different from Java's exception-based error handling.
+
+10. When creating reusable code in Go, why might you prefer interfaces over struct embedding?
+
+   A) Interfaces provide more robust data encapsulation.
+    - Incorrect. Both interfaces and struct embedding can be used for data encapsulation, but Go interfaces are used primarily to achieve polymorphism.
+  
+   B) Interfaces are a way to achieve polymorphism.
+    - Correct. Interfaces in Go let you define behavior instead of explicitly referring to specific struct types, allowing for polymorphism without inheritance.
+  
+   C) Interfaces support overridden methods.
+    - Incorrect. Go, unlike Java, does not support method overriding in the traditional sense.
