@@ -26,10 +26,10 @@ Page_name: What is parallelism and concurrency?
 3. In which scenario is sequential programming most suitable?
 
    A) When multiple independent tasks need to be performed.
-   - Incorrect. Independent tasks are better handled by either parallel or concurrent programming. These methods allow tasks to run simultaneously, improving efficiency.
+   - Incorrect. Independent tasks are better handled by either parallel or concurrent programming. These methods allow tasks to run (at the least seemingly) in parallel. In the case of parallel programming, the execution time is likely to improve. A purely concurrent program might take a little bit longer to complete all tasks as compared to a sequential program, but concurrency can enable the program to be much more responsive to for example user interaction.
 
    B) When new tasks depend on the results of previous tasks.
-   - Correct. Sequential programming is the best option for tasks that depend on each other. In this model, tasks are run one after the other.
+   - Correct. Sequential programming can be well suited for tasks that depend on each other. In this model, tasks are run one after the other.
 
    C) When there are tasks that have no relation to each other.
    - Incorrect. Unrelated tasks can be handled more efficiently with concurrent or parallel programming which allows simultaneous execution.
