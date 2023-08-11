@@ -107,17 +107,6 @@ type Shape interface {
    C) Go arrays are of a fixed size.
     - Correct. Go's approach to arrays is different from that of Java – Go arrays have a fixed size determined at the time of declaration.
 
-7. Why is the use of Generics limited in Go compared to Java?
-
-   A) Go has enforced strict typing, therefore generics aren’t needed.
-    - Incorrect. While Go is a statically typed language, this doesn't relate to the lack of generics. It's more about design decisions regarding type safety and simplicity.
-  
-   B) Go does not currently have built-in support for Generics.
-    - Correct. Go does not have support for generics, although this could change in the future.
-  
-   C) Generics can cause runtime errors, which Go seeks to avoid.
-    - Incorrect. This is a misunderstanding of the purpose of generics. The lack of generics in Go is related to design decisions, not a concern about runtime errors.
-
 8. How is data encapsulation different in Go from Java?
 
    A) Go does not provide any data hiding, everything is public.
