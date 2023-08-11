@@ -56,17 +56,6 @@ require (
    C) There is no difference, the terms are interchangeable
    - Incorrect. Although dependencies can be a mix of packages and modules, these are distinct concepts in Go.
 
-5. How is 'v1.2.3' interpreted in Go module versioning?
-   
-   A) Go version 1, Module update 2, Bug fix 3
-   - Incorrect. The 'vx.y.z' is more to do with the version of the particular module, rather than the Go language or types of updates.
-   
-   B) Major version 1, Minor version 2, Patch version 3
-   - Correct. The version string 'v1.2.3' represents Major, Minor, and Patch versions respectively in semantic versioning.
-   
-   C) It is an invalid module versioning format
-   - Incorrect. 'v1.2.3' is a valid semantic versioning format in Go, where each position has a specific meaning.
-
 6. How would you add a new dependency to your Go module?
    
    A) By adding the import path to the `go.mod` file
