@@ -1,0 +1,79 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: Setting up Go
+
+1. Which command initializes a new Go module in your current directory?
+   
+   A) `go init module`
+   - Incorrect. Remember that the command structure uses 'mod' instead of 'module' and 'init' is not the first keyword.
+  
+   B) `go mod init`
+   - Correct. `go mod init` initializes a new Go module in your current directory. It creates a `go.mod` file that describes the module.
+   
+   C) `go module start`
+   - Incorrect. 'go module start' is not a valid command in Go. Revisit the commands used to create a module in Go.
+
+2. What is the default file created when you initialize a new Go module and what does it contain?
+   
+   A) `go.mod`, which contains the module path and its dependencies.
+   - Correct. Initializing a Go module creates a `go.mod` file, listing the module path and its dependencies.
+   
+   B) `go.pack`, which contains all the Go packages in the module
+   - Incorrect. Go does not generate a `go.pack` file upon module initialization. The main file of each module has a specific name.
+   
+   C) `mod.go`, which contains the main function
+   - Incorrect. `mod.go` is not the file created during module initialization. Go uses a specific file to maintain the module details.
+
+3. Looking at the following code, what does `go.mod` file do in this context?
+
+```go
+module github.com/my/repo
+
+go 1.14
+
+require (
+    github.com/pkg/errors v0.8.1
+    golang.org/x/net v0.0.0-20200202094626-16171245cfb2
+)
+```
+
+   A) It specifies the version of Go used in the project
+   - Incorrect. Although `go.mod` specifies the language version "go 1.14", it serves a broader purpose in a module.
+   
+   B) It defines the module path, the project's dependencies, and the Go version
+   - Correct. The `go.mod` file defines the module path, the Go version, and all the dependencies required by the project.
+   
+   C) It is the main script that runs the module
+   - Incorrect. `go.mod` does not contain any runnable code. Try to remember its actual purpose.
+
+4. What is the difference between packages and modules in Go?
+   
+   A) Modules are older; packages were introduced in Go 1.13
+   - Incorrect. Both packages and modules have been part of Go since its earlier versions, but they serve different purposes.
+   
+   B) A module is a collection of Go packages, while a package is a way to organize code within a module
+   - Correct. Modules can contain multiple packages, and each of the packages can contain multiple Go source files.
+   
+   C) There is no difference, the terms are interchangeable
+   - Incorrect. Although dependencies can be a mix of packages and modules, these are distinct concepts in Go.
+
+7. What happens when you execute `go mod tidy` in a module with unused dependencies?
+   
+   A) It deletes all unused Go files in the module
+   - Incorrect. `go mod tidy` does not delete any Go source files. It affects a different component in a module.
+   
+   B) It adds missing dependencies and removes unnecessary ones
+   - Correct. `go mod tidy` ensures that the go.mod file matches the source code in the module by adding required and removing unused dependencies to the go.mod file.
+   
+   C) It compiles all Go source files in the module
+   - Incorrect. `go mod tidy` is not involved in the compilation process. It helps manage module dependencies.
+
+10. How can you ensure that your Go module is using the latest version of its dependencies?
+   
+   A) By manually editing the version numbers in the `go.mod` file
+   - Incorrect. Manually editing the version numbers in `go.mod` is not a recommended practice in Go programming as there's an in-built methodology for it.
+   
+   B) By executing `go get -u`
+   - Correct. `go get -u` updates all the direct and indirect dependencies to the latest version.
+   
+   C) Versions are automatically updated each time the module is run
+   - Incorrect. The Go module does not update dependency versions each time it is run. Explicit command is required to update dependencies.
