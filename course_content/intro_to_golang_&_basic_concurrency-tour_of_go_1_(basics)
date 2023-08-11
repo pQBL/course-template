@@ -1,16 +1,16 @@
 Unit_name: Intro to Golang & Basic Concurrency
 Page_name: Tour of Go 1 (Basics)
 
-1. In Go, which of the following statements correctly initializes a variable "number" with the integer value 5?
+1. In Go, which of the following statements correctly initializes a variable called "number" with the integer value 5?
 
     A) let number := 5
-    - Incorrect. 'let' is not a valid keyword in Go. Instead, Go uses ':=' for short declaration.
+    - Incorrect. 'let' is not a valid keyword in Go.
 
     B) var number integer = 5
     - Incorrect. Though 'var' is correct, 'integer' is not a data type in Go. The 'int' keyword is used for integer data types.
 
     C) number := 5
-    - Correct. ':=' is a short form declaration in Go when you directly want to assign a value to the variable.
+    - Correct. ':=' is a short form declaration in Go when you directly want to assign a value to the variable. Alternative B) would also be correct if you change "integer" to "int".
 
 2. Which of the following correctly imports the 'fmt' package necessary for formatting in Go?
 
