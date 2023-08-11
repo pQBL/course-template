@@ -56,24 +56,13 @@ require (
    C) There is no difference, the terms are interchangeable
    - Incorrect. Although dependencies can be a mix of packages and modules, these are distinct concepts in Go.
 
-6. How would you add a new dependency to your Go module?
-   
-   A) By adding the import path to the `go.mod` file
-   - Incorrect. Adding the import manually in `go.mod` is not how Go handles dependencies. It has a built-in methodology for it.
-   
-   B) By importing the package in the Go source file where it's needed
-   - Correct. When you import a package in your Go source file, it gets added to your module dependencies automatically.
-   
-   C) By copying the package source code to the module directory
-   - Incorrect. Copying source code into the module is not a recommended way to handle dependencies and could potentially lead to issues.
-
 7. What happens when you execute `go mod tidy` in a module with unused dependencies?
    
    A) It deletes all unused Go files in the module
    - Incorrect. `go mod tidy` does not delete any Go source files. It affects a different component in a module.
    
    B) It adds missing dependencies and removes unnecessary ones
-   - Correct. `go mod tidy` ensures that the go.mod file matches the source code in the module by adding required and removing unused dependencies.
+   - Correct. `go mod tidy` ensures that the go.mod file matches the source code in the module by adding required and removing unused dependencies to the go.mod file.
    
    C) It compiles all Go source files in the module
    - Incorrect. `go mod tidy` is not involved in the compilation process. It helps manage module dependencies.
