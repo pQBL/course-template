@@ -122,17 +122,6 @@ Page_name: Tour of Go 1 (Basics)
     C) Constants represent mutable entities that do not change.
     - Incorrect. Constants in Go are immutable - that's what makes them constants!
 
-9. What is the behavior of untyped constants in Go?
-
-    A) They retain their 'untyped' status until they are assigned to a variable.
-    - Correct. Untyped constants in Go have a default type but can assume any compatible type if needed, they get the type strictly when they are assigned to a variable or when they are used in an explicit context that requires a specific type.
-   
-    B) They are automatically assigned an 'int' type.
-    - Incorrect. Untyped constants do not automatically default to `int`, their type gets decided based on the context where they're used.
-   
-    C) They are always treated as strings.
-    - Incorrect. The type of the untyped constants gets decided based on the context where it is used and its value, not always a string.
-
 10. What would `var z int` do in a Go program?
 
     A) It causes a syntax error.
@@ -154,27 +143,6 @@ Page_name: Tour of Go 1 (Basics)
 
     C) for-loop beside a panic
     - Incorrect. The `for` looping structure and `panic` do not help in recovering control after a go routine panics.
-
-
-2. Here is a piece of code:
-
-```
-for index, value := range myArray {
-    fmt.Println("Index:", index, "Value:", value)
-}
-```
-
-What does the above `for` loop do in Go?
-
-    A) It prints the index of myArray
-    - Incorrect. Not just the indexes, it prints both indexes and values from `myArray`.
- 
-    B) It prints all the values of myArray
-    - Incorrect. It prints both the values and their corresponding indexes from `myArray`.
-    
-    C) It prints both the index and value for each item in myArray.
-    - Correct. The given code snippet prints each item's index and value from `myArray`.
-
 
 3. Let's say you're given a simple task to accept a grade and display the result as 'pass' if the grade is 50 or above, and 'fail' otherwise. Which Golang control structure would be the optimal choice?
 
