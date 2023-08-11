@@ -32,7 +32,7 @@ Page_name: Tour of Go 2 (Data structures)
     - Correct. This is an essential feature of slices in Go and one of the main reasons they're often used over arrays.
 
     C) Slices cannot store more than 10 items.
-    - Incorrect. There's no intrinsic limitation on the number of items that a slice can store. The size of the slice can be changed dynamically as needed.
+    - Incorrect. There's no intrinsic limitation on the number of items that a slice can store.
 
 4. If you're declaring a map in Golang that has string keys and integer values, which would you use?
 
