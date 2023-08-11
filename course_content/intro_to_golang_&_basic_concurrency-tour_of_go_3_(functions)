@@ -4,13 +4,13 @@ Page_name: Tour of Go 3 (Functions)
 1. When might you want to use an anonymous function in Go?
 
     A) When you want to define a new data type
-    - Incorrect. In Go, functions are not used for defining new data types. Anonymous functions are more typically used as arguments or when you need a one-off function that won’t be used elsewhere.
+    - Incorrect. In Go, functions are not used for defining new data types.
 
     B) When you need a one-off function that won’t be used elsewhere
     - Correct. Because anonymous functions don’t have a name by which they can be called later, they are typically used when you need a function at a particular point and won’t need it elsewhere.
   
     C) When you want to make your code more difficult to read
-    - Incorrect. While anonymous functions can potentially make code more difficult to read, this should not be a goal when writing code. It is correct to use them when you need a one-off function.
+    - Incorrect. While anonymous functions can potentially make code more difficult to read, the only time this answer might be a valid reason is when you want to create a bad example.
 
 2. You are passing a variable to a function and you need the function to alter the original variable. How would you accomplish this in Go?
 
@@ -26,24 +26,13 @@ Page_name: Tour of Go 3 (Functions)
 3. Consider this function signature: `func doSomething(a, b int, c string) (int, string)`. How would you call this function and ignore its returned string value?
 
     A) `doSomething(1, 2, "something")`
-    - Incorrect. This way of calling the function will give both the returned int and string. If you want to ignore the string, use the blank identifier _.
+    - Incorrect. This way of calling the function will give both the returned int and string.
   
     B) `doSomething(1, 2, "something")._`
     - Incorrect. The ._ at the end is trying to get an attribute named _, but the correct syntax to ignore the string result is: `var1, _ := doSomething(1, 2, "something")`
     
     C) `var1, _ := doSomething(1, 2, "something")`
     - Correct. Using _ as the variable name will effectively ignore the second return value.
-    
-4. You're defining a function that has both important and optional return values. How should you order these return values in Go?
-
-    A) Important values first, then optional
-    - Correct. Important return values should generally be placed before optional ones. That way, if a user of your function wants to ignore the optional ones, they can easily do so.
-  
-    B) Optional values first, then important
-    - Incorrect. If optional values are first, a caller who wants to ignore them and just get the important values will be inconvenienced.
-  
-    C) It doesn't matter, as long as the function documentation is clear
-    - Incorrect. While clear documentation is always important, good function design can also make your functions easier to use. In this case, putting important return values first simplifies things for callers.  
 
 5. How could you apply the concept of first-class functions in Golang?
 
@@ -107,7 +96,7 @@ Page_name: Tour of Go 3 (Functions)
 5. Given `func foo(args ...int)` and an array `a := [3]int{1,2,3}`, how would you pass 'a' to 'foo'?
 
     A) Directly like this `foo(a)`
-    - Incorrect. Go requires an explicit conversion of an array to a slice using the "..." operator before it can be used as a variadic parameter.
+    - Incorrect. This attempts to pass a list of ints to a function that expects the arguments to be of type int.
   
     B) As `foo([]int(a)...)`
     - Incorrect. It's necessary to convert the array to a slice, but this syntax is wrong. You should use the "..." operator directly on the array like so `foo(a[:]...)`.
@@ -224,8 +213,6 @@ func counter() func() int {
 
     C) The variable `count` will reset to 0 for each call to the function returned by `counter`.
     - Incorrect. In Go, the `count` variable does persist across multiple calls. It's a key feature of closures.
-
-As previously, follow with questions 4-10. Make sure they vary in complexity and deal with different aspects of closures in Go, from their theoretical basis to practical uses, and always provide an appropriate explanation for the correct answer and the incorrect alternatives.
 
 1. What is the primary purpose of anonymous functions in Go?
 
