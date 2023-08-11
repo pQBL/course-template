@@ -34,17 +34,6 @@ Page_name: Tour of Go 1 (Basics)
     C) if [x > 10] then {...} else {...}
     - Incorrect. Go doesn't use brackets or the 'then' keyword in if-else loops.
 
-5. What is the appropriate way of defining string variables in Go?
-
-    A) var str = "Hello, world!"
-    - Incorrect. Though this syntax will work, it is not fully correct as it doesn't specify the variable data type 'string'. 
-
-    B) var str string = "Hello, world!"
-    - Correct. This defines 'str' as a string and assigns it the value "Hello, world!".
-
-    C) str := string "Hello, world!"
-    - Incorrect. The ':=' operator is used for shorthand but 'string' as keyword should not be after ':=' operator.
-
 1. You're writing a Go program and accidentally define a variable as `var x int = "5"`. What will happen?
 
     A) Go will implicitly convert "5" to an integer since `x` is declared as int.
