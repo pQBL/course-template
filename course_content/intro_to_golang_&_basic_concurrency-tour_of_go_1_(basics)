@@ -23,17 +23,6 @@ Page_name: Tour of Go 1 (Basics)
     C) import "fmt"
     - Correct. 'import' is the keyword used to import packages in Go.
 
-3. Consider the function declaration in Go: `func addition(a int, b int) int`. How would you call this function with the arguments 3 and 5?
-
-    A) addition 3, 5
-    - Incorrect. In Go, function arguments need to be enclosed in parentheses.
-
-    B) addition(3, 5)
-    - Correct. The arguments are correctly enclosed in parentheses.
-
-    C) addition:3, 5
-    - Incorrect. Go doesn't use colons for calling functions.
-
 4. How would you implement an if-else loop to check if a variable 'x' is greater than 10 in Go?
 
     A) if (x > 10) {...} else {...}
