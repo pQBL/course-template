@@ -26,7 +26,7 @@ Page_name: Tour of Go 1 (Basics)
 4. How would you implement an if-else loop to check if a variable 'x' is greater than 10 in Go?
 
     A) if (x > 10) {...} else {...}
-    - Incorrect. In Go, there are no round brackets "( )" around conditions in if-else loops.
+    - Whilst technically correct, in Go there are no round brackets "( )" around conditions in if-else loops.
 
     B) if x > 10 {...} else {...}
     - Correct. This is the correct syntax of an if-else statement in Go.
