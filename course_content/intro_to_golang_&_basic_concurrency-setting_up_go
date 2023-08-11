@@ -67,28 +67,6 @@ require (
    C) It compiles all Go source files in the module
    - Incorrect. `go mod tidy` is not involved in the compilation process. It helps manage module dependencies.
 
-8. How can you keep track of direct and indirect imports in your Go module?
-   
-   A) Go automatically maintains direct and indirect imports in different files
-   - Incorrect. Go does not maintain imports in different files. It uses a specific method to manage them.
-   
-   B) You have to manually maintain a list of direct and indirect imports
-   - Incorrect. You do not need to maintain the list manually. Go provides in-built functionality to handle this.
-   
-   C) Direct and indirect imports are both maintained in the `go.mod` file
-   - Correct. The `go.mod` file includes details of both direct and indirect imports in your Go module.
-
-9. If packages are a way to organize code within a module in Go, what is the purpose of creating a new module in your Go project?
-   
-   A) To group related packages
-   - Incorrect. While related packages could be grouped in a module, there is a more specific reason for creating a new module in a Go project.
-   
-   B) To isolate dependencies for different features or components
-   - Correct. Creating a new module can be helpful when we want to isolate dependencies for different features or components in a Go project.
-   
-   C) To create a new main function
-   - Incorrect. Creating a new module does not necessarily mean creating a new main function. Reconsider the purpose of a module in a Go project.
-
 10. How can you ensure that your Go module is using the latest version of its dependencies?
    
    A) By manually editing the version numbers in the `go.mod` file
