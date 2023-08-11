@@ -80,8 +80,8 @@ Page_name: A touch of concurrency
 
 8. Which of the following creates an unbuffered channel?
 
-    A) x := make(chan int, 0)
-    - Correct. This creates an unbuffered channel with no capacity.
+    A) x := make(chan int, -1)
+    - Incorrect. You can't specify the buffer size using a negative number.
 
     B) x := make(chan int, 1)
     - Incorrect. This statement creates a buffered channel with a capacity of one, not an unbuffered channel.
@@ -99,17 +99,6 @@ Page_name: A touch of concurrency
 
     C) c <-
     - Incorrect. 'c <' is not a correct sequence. It should be '<- c' to receive a value from channel c.
-
-10. Given a goroutine is panicking, how can you prevent this from crashing the entire program?
-
-    A) By using a recover() function within a deferred function
-    - Correct. You can regain control of a panicking goroutine with the `recover()` function in a deferred function.
-
-    B) Invoking stop() method on the goroutine
-    - Incorrect. There is no predefined stop() method to control goroutines. Use the `recover()` function in a deferred function.
-
-    C) Catching the exception using a catch block
-    - Incorrect. Go does not have try/catch blocks. To handle a panic, use the `recover()` function inside a deferred function.
 
 1. Given the code snippet below, will the function "myFunction()" be executed as a goroutine?
 
