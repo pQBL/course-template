@@ -22,7 +22,17 @@ To set up the workflow you need to do the below steps. The video tutorials furth
 
 1. Create a fork of this template repository.
 
-2. Set up five GitHub secrets. You need to create 5 GitHub secrets in your forked repository. Create the following secrets:
+   If you fork to your own GitHub Account instead of to the pQBL organization you must also:
+
+   1. Go into settings for the forked repository
+   2. Click on Actions
+   3. Click on General
+   4. Scroll down to "Workflow permissions" and enable:
+
+      1. Read and write permissions
+      2. Allow GitHub Actions to create and approve pull requests.
+
+3. Set up five GitHub secrets. You need to create 5 GitHub secrets in your forked repository. Create the following secrets:
 
     1. OPENAI_API_KEY_KTH - API key for OpenAI
     2. BOTS_ACCESS_TOKEN - GitHub access token that has read access to the torusbot and qbl-bot-pipeline repositories
