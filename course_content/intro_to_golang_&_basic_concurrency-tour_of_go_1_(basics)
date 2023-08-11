@@ -53,7 +53,7 @@ Page_name: Tour of Go 1 (Basics)
    B) String variables cannot hold more than one word.
    - Incorrect. The problem is not with the string value but with the variable declaration syntax.
    
-   C) The semi-colon at the end is unnecessary in Go.
+   C) Missing semi-colon at the end.
    - Incorrect. Although Go does not require semicolons at the end of statements (as they are automatically inserted by the compiler at the end of each line), the main problem here is the variable declaration syntax.
 
 3. Suppose you have a `float64` value and an `int` value in Go. You want to add them together. How would you accomplish this?
