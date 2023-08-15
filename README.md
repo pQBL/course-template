@@ -9,7 +9,7 @@ This is done using [GitHub Actions](https://github.com/features/actions) in comb
 - [Setup](#setup)
   - [1. Fork template repository](#1-fork-template-repository)
   - [2. Update workflow permissions](#2-update-workflow-permissions)
-  - [3. Set up necessary credentials](#3-set-up-necessary-credentials)
+  - [3. Enter necessary credentials](#3-enter-necessary-credentials)
   - [4. Activate GitHub Actions](#4-activate-github-actions)
 - [How to create a course](#how-to-create-a-course)
   - [1. Create a skill map](#1-create-a-skill-map)
@@ -41,7 +41,7 @@ The workflow needs to create new branches for each generated page. This is not a
 
 > ![image](/imgs/permissions.png)
 
-### 3. Set up necessary credentials
+### 3. Enter necessary credentials
 
 The workflow uses credentials stored as [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets). These need to be added in order for the workflow to function properly. To do this, go to **Settings > Secrets and Variables > Actions** and click the button labeled **New repository secret**:
 
