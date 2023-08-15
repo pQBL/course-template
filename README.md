@@ -8,7 +8,7 @@ This is done using [GitHub Actions](https://github.com/features/actions) in comb
 ## Table of Contents
 - [Setup](#setup)
   - [1. Fork template repository](#1-fork-template-repository)
-  - [2. Update worfkflow permissions](#2-update-worfkflow-permissions)
+  - [2. Update workflow permissions](#2-update-workflow-permissions)
   - [3. Set up necessary credentials](#3-set-up-necessary-credentials)
   - [4. Activate GitHub Actions](#4-activate-github-actions)
 - [How to create a course](#how-to-create-a-course)
