@@ -134,3 +134,7 @@ Repeat the steps for every page to generate the whole course.
 * YAML uses indentation to denote hierarchy. Make sure you indent correctly.
 * YAML wants indentation using spaces, not tabs. However, you likely don't need to worry about that as your editor will probably convert tabs to spaces automatically.
 * YAML uses colons to denote key-value pairs. Ex. `key1: value1`. If the value text contains a colon, you must put the value text in quotation marks. Ex. `key1: "See the following: value"`.
+
+## Practical tips
+
+If a page has multiple skills you will see that the questions numbering will start over. That is because the tool independently generates questions for each skill listed under a page.
