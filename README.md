@@ -48,4 +48,6 @@ Video set up tutorial
 
 Video demo tutorial
 
-Practical tips
+## Practical tips
+
+If a page has multiple skills you will see that the questions numbering will start over. That is because the tool independently generates questions for each skill listed under a page.
