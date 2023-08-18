@@ -19,6 +19,7 @@ This is done using [GitHub Actions](https://github.com/features/actions) in comb
 - [Video setup tutorial](#video-setup-tutorial)
 - [Video demo tutorial](#video-demo-tutorial)
 - [YAML quick guide](#yaml-quick-guide)
+- [Practical tips](#practical-tips)
 
 
 ## Setup
