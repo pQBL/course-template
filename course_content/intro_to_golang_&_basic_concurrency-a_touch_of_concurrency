@@ -1,0 +1,366 @@
+Unit_name: Intro to Golang & Basic Concurrency
+Page_name: A touch of concurrency
+
+1. How does the 'go' keyword affect function execution in Go?
+
+    A) It runs the function concurrently as a goroutine
+    - Correct. The 'go' keyword triggers the function to run concurrently as a goroutine.
+  
+    B) It denotes the function to be a generator
+    - Incorrect. The 'go' keyword in Go is not used to denote generator functions.
+
+    C) It marks the function as asynchronous
+    - Incorrect. While 'go' may seem similar to 'async' in other languages, in Go it specifically starts a goroutine.
+
+2. What does the following code do? var c = make(chan int)
+
+    A) Declares a variable c of type int
+    - Incorrect. This code creates a channel of integers, not just a variable of type int.
+
+    B) Creates a channel of strings
+    - Incorrect. It creates a channel of type int, not a channel of strings.
+
+    C) Creates a channel of type integer
+    - Correct. var c = make(chan int) creates a channel to send and receive values of type int.
+
+3. Why would you use a channel in Go?
+
+    A) To access global variables
+    - Incorrect. Channels are used to communicate between goroutines, not specifically to access global variables.
+
+    B) To synchronize concurrent goroutines and share data between them
+    - Correct. Channels are primarily used to synchronize and pass data between goroutines.
+
+    C) To create a goroutine
+    - Incorrect. Channels are not used to create goroutines.
+
+4. Consider you have a channel with capacity of 3. What happens if you try writing a fourth value into this channel?
+
+    A) The fourth value overwrites the oldest value in the channel
+    - Incorrect. Channels in Go do not overwrite older values. They block when they're full until they can send another value.
+
+    B) The goroutine blocks until there is space in the channel
+    - Correct. If a channel is full, the goroutine trying to write to the channel blocks until there is space.
+
+    C) It results in a panic
+    - Incorrect. Writing to a full channel doesn't cause a panic, but it does cause the goroutine to block.
+
+5. If a goroutine tries to read from an empty channel, what happens?
+  
+    A) It receives a default value
+    - Incorrect. Reading from an empty channel does not result in a default value. The goroutine will block until a value is sent on the channel.
+
+    B) The goroutine blocks until a value is sent on the channel
+    - Correct. If a channel is empty, the goroutine trying to read from the channel blocks until there is a value.
+
+    C) A nil value is returned
+    - Incorrect. Empty channels do not send nil values. The goroutine will block until a value is sent to the channel.
+
+6. Consider a goroutine is executing a function and the function finishes its task. What happens to the goroutine?
+
+    A) The goroutine relocates to another function
+    - Incorrect. A goroutine won't be relocated to another function. It will terminate after it finishes its task.
+
+    B) It pauses and waits for the main function to finish
+    - Incorrect. The goroutine won't pause. It will be terminated as the function it was executing is finished.
+
+    C) The goroutine terminates
+    - Correct. When the function the goroutine is running finishes, the goroutine terminates.
+
+7. Consider you're creating a concurrent application in which goroutines are scheduled. How are these goroutines scheduled in Go?
+
+    A) Go uses a cooperative scheduling approach for goroutines
+    - Incorrect. Go doesn't use a cooperative scheduling approach but a preemptive one where the Go runtime decides when to swap out one goroutine for another.
+
+    B) It depends on the complexity of the code
+    - Incorrect. It does not depend on the code's complexity. Go uses a preemptive scheduling method to manage goroutines.
+
+    C) Go uses a preemptive scheduling method for goroutines
+    - Correct. Go indeed uses a preemptive scheduling method where the Go runtime decides when to swap out goroutines.
+
+8. Which of the following creates an unbuffered channel?
+
+    A) x := make(chan int, -1)
+    - Incorrect. You can't specify the buffer size using a negative number.
+
+    B) x := make(chan int, 1)
+    - Incorrect. This statement creates a buffered channel with a capacity of one, not an unbuffered channel.
+
+    C) x := make(chan int)
+    - Correct. This also creates an unbuffered channel. An unbuffered channel has no capacity.
+
+9. Consider you have a channel c. Which symbol is used to receive a value from c?
+
+    A) c <-=
+    - Incorrect. 'c <-=' is not a correct operator. Use '<-' to receive a value from a channel.
+
+    B) <- c
+    - Correct. The '<-' operator is used before the channel variable to receive a value.
+
+    C) c <-
+    - Incorrect. 'c <' is not a correct sequence. It should be '<- c' to receive a value from channel c.
+
+1. Given the code snippet below, will the function "myFunction()" be executed as a goroutine?
+
+    ```Go
+    go myFunction()
+    ```
+
+    A) No
+    - Incorrect. The 'go' keyword before a function call is used to create a goroutine.
+  
+    B) Yes
+    - Correct. The 'go' keyword before a function call means the function will be executed concurrently as a goroutine.
+    
+    C) This code will result in an error
+    - Incorrect. The syntax is correct for initiating a goroutine.
+
+2. Consider the following Go code snippet. What is the output?
+
+    ```Go
+    package main  
+    import "fmt"
+    
+    func main() {  
+	    ch := make(chan string)
+	    go func() {
+	    	ch <- "Golang"
+	    }()
+	    fmt.Println(<What goes here?>)
+    }
+    ```
+
+    A) "Golang" <- ch
+    - Incorrect. This syntax is used to send a value to a channel, not to receive.
+    
+    B) <- ch
+    - Correct. The '<-ch' syntax is used to receive and print a value from a channel.
+    
+    C) ch -> "Golang"
+    - Incorrect. The '->' operator is not used in Go.
+
+3. Given the Go code snippet:
+
+    ```Go
+    ch := make(chan int)
+    ```
+
+    What type of channel is 'ch'?
+
+    A) String channel
+    - Incorrect. The 'int' after the 'chan' keyword denotes that this channel is used for transmitting integers.
+  
+    B) Buffered channel
+    - Incorrect. The syntax for creating a buffered channel would contain an additional argument for the buffer size.
+    
+    C) Integer channel
+    - Correct. The 'int' keyword denotes this is an integer channel.
+
+4. In Go, if we have multiple channel operations and we want to choose any one operation that is ready, what keyword do we use?
+
+    A) choose
+    - Incorrect. 'choose' is not a keyword in Go. Think about a keyword that helps select between different cases.
+
+    B) select
+    - Correct. The 'select' statement is used to handle multiple channel operations.
+ 
+    C) switch
+    - Incorrect. While 'switch' is a decision making statement in Go, it isn't used to handle multiple channel operations.
+
+5. For the following code snippet, which answer correctly fills the blank to create a buffered channel?
+
+    ```Go
+    myChannel := make(chan int, ___)
+    ```
+    
+    A) size of the buffer
+    - Correct. Replace ___ with the required buffer size to create a buffered channel.
+  
+    B) default
+    - Incorrect. 'default' cannot be used here as 'default' is primarily used within 'select' statements in Go.
+    
+    C) 0
+    - Incorrect. While technically this wouldn't throw an error, it actually creates an unbuffered channel since channels of size 0 block sender till receiver is ready.
+
+6. What happens if a panic is encountered in a goroutine in Go?
+
+    A) It halts the entire program execution
+    - Correct. In Go, a panic within a goroutine halts the whole program, unless recovered. 
+
+    B) It halts only that goroutine, the main program continues to execute.
+    - Incorrect. A panic within a goroutine, unless recovered, halts the entire program, not just the choking goroutine. 
+  
+    C) Panics can't occur within a goroutine.
+    - Incorrect. Panics can occur both in the main function and within goroutines.
+
+7. Which of the following statements are true regarding goroutines and channels in Go?
+
+    A) You can't send to or receive from a nil channel.
+    - Correct. Nil channels are always blocked, and thus operations on them will lead to a deadlock.
+  
+    B) A closed channel can receive values.
+    - Incorrect. A closed channel cannot receive values, but it can still send values. 
+
+    C) By default, operations on a channel are non-blocking.
+    - Incorrect. By default, channel operations are blocking in Go.
+
+8. Given a select statement in Go, which keyword can be used to introduce a default case that runs when no other case is ready?
+
+    A) default
+    - Correct. 'default' keyword is used to introduce a default case that runs when no other case is ready in a select statement.
+  
+    B) else
+    - Incorrect. Though 'else' is used in other languages for a similar purpose, Go uses 'default' in this context.
+  
+    C) other
+    - Incorrect. There's no 'other' keyword in Go.
+
+9. The code snippet provided launches a goroutine. If the main function finishes before the goroutine, what happens to the goroutine?
+
+    ```Go
+    go func() {
+        // Some long operation
+    }()
+    ```
+
+    A) It continues to run until completion.
+    - Incorrect. When the main function completes, all running goroutines are stopped, regardless of their state.
+  
+    B) It is paused and resumed when the main function is called again.
+    - Incorrect. Goroutines do not pause and resume in between function calls. They are stopped if the main function ends.
+
+    C) It is stopped before completion.
+    - Correct. If the main function of the program completes, all goroutines are stopped, even if they haven't completed their execution.
+
+10. Given the following Go code, what will happen if a panic occurs inside the anonymous goroutine?
+
+    ```Go
+    go func() {
+        defer func() {
+            if r := recover(); r != nil {
+                fmt.Println("Recovered from", r)
+            }
+        }()
+        // code that can panic
+    }()
+    ```
+
+    A) It will panic and halt the entire program execution.
+    - Incorrect. The 'recover' function inside a defer statement will catch and recover from the panic, avoiding a halt.
+  
+    B) It will panic but it won't halt the program, the panic will be recovered.
+    - Correct. The 'recover' function inside a defer statement will recover the panic, preventing the program from halting.
+    
+    C) A panic will not occur.
+    - Incorrect. We do not know whether a panic will occur or not, but if it does, the 'recover' inside the goroutine's defer statement will handle it.
+
+1. You are creating a Go utility for data processing where data comes from different sources. To manage this, you decide to utilise Go's concurrency model. How would you create a channel of type `int` in Go?
+
+    A) `intChan := make(chan int)`
+    - Correct. This is the preferred way to create a new int channel in Go.
+
+    B) `intChan := new(chan int)`
+    - Incorrect. In Go, we use 'make' instead of 'new' to create channels.
+
+    C) `channel := chan int{}`
+    - Incorrect. Channels in Go are created using 'make(chanint)’, not 'chan int{}'
+
+2. In order to receive or read a value from the channel 'ch', what operation would you perform?
+
+   A) `ch <- =`
+   - Incorrect. 'ch <- =' isn't valid Go syntax. To receive from a channel, you should use '<-ch'.
+ 
+   B) `<- ch`
+   - Correct. '<-ch' is the correct operation to perform to receive a value from the channel 'ch'.
+  
+   C) `ch <-`
+   - Incorrect. 'ch <-' isn't a complete Go operation. Sending to a channel requires a value, as in 'ch <- value'.
+
+3. Consider this code snippet: `ch <- 5`. What is actually happening?
+
+    A) It performs a receive operation, putting the value 5 into the channel 'ch'
+    - Incorrect. 'ch <- 5' sends 5 into the channel 'ch', it doesn't perform a receive operation.
+ 
+    B) An integer 5 is sent into the channel 'ch'
+    - Correct. 'ch <- 5' sends the integer 5 into the channel 'ch' via a send operation.
+
+    C) The channel 'ch' is assigned 5
+    - Incorrect. 'ch <- 5' isn't an assignment operation. It's a send operation.
+
+4. Imagine you're writing a function that processes data from a Go channel 'ch'. You want to avoid deadlock, but you aren't sure whether 'ch' still contains data. How can you check if a channel 'ch' is empty?
+
+    A) `if len(ch) == 0`
+    - Incorrect. The 'len' function doesn’t work on channels in Go.
+
+    B) `if ch.empty()`
+    - Incorrect. Go does not provide a built-in 'empty' function for channels.
+
+    C) Using a default clause inside a select statement
+    - Correct. Checking if a channel is empty or not can be achieved inside a select statement using the default clause.
+
+5. You are developing a real-time chat application in Go where messages can be both sent and received. How would you send the string "hello" to a chat channel 'ch'?
+
+    A) `hello -> ch`
+    - Incorrect. In Go, 'ch <- hello' is the correct syntax for sending to a channel.
+
+    B) `ch <- "hello"`
+    - Correct. 'ch <- "hello"' sends the string 'hello' into the chat channel 'ch'.
+
+    C) `ch.send("hello")`
+    - Incorrect. 'ch.send("hello")' is not valid in Go as channels do not have a 'send' method.
+
+6. How do you create a buffered channel in Go that could hold up to 5 integers?
+
+    A) `ch := make(chan int, 5)`
+    - Correct. This is how you make a new buffered channel of type int that can hold up to 5 integers in Go.
+
+    B) `buffer ch := make(chan int)`
+    - Incorrect. Buffer size needs to be specified during channel creation. The 'buffer' keyword does not exist in Go.
+
+    C) `ch := make(chan int)`
+         `ch.buffer = 5`
+    - Incorrect. In Go, you cannot assign buffer size after initialization.
+
+7. How can you close a channel 'ch' in Go?
+
+    A) `ch.close()`
+    - Incorrect. In Go, you need to use the built-in 'close' function to close a channel, not the '.close()' method.
+
+    B) `close(ch)`
+    - Correct. To close a channel in Go you use the 'close' function.
+   
+    C) `ch = nil`
+    - Incorrect. Assigning 'nil' to a Go channel does not close the channel.
+  
+8. Suppose you are developing a Go program and accidentally attempt to send data on a closed channel. What will happen?
+
+    A) The program will fail silently.
+    - Incorrect. The program won’t fail silently. It will panic.
+
+    B) The program will crash (panic).
+    - Correct. In Go, sending data on a closed channel causes a panic.
+   
+    C) The sent data will be discarded but the program will continue to run.
+    - Incorrect. The program won’t keep running after a send operation on a closed channel. It results in a panic.
+
+9. You have several channels sending different types of data and you need to listen on all of them in a single goroutine. What Go feature would you use?
+
+    A) Using nested if statements.
+    - Incorrect. Nested if statements wouldn't serve the purpose here.
+
+    B) Using a select statement.
+    - Correct. The 'select' statement is used to listen on multiple channels.
+
+    C) Using a for loop with range keyword.
+    - Incorrect. Use 'select' to listen on multiple channels, not a for loop.
+
+10. How can you empty a buffer channel in Go or drain all of its contents safely?
+
+    A) By iterating over it with a while loop
+    - Incorrect. A while loop isn't a construct in Go; you could use a for loop, but you risk draining a non-empty channel and blocking indefinitely.
+
+    B) By using a for range loop 
+    - Incorrect. A for range loop over a channel will block when the channel is drained unless it is also closed.
+
+    C) By using a for-select-default loop
+    - Correct. A for-select-default loop would safely drain the channel and exit once it's empty.
