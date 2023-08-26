@@ -39,10 +39,11 @@ jobs:
             body: `Deployment of file: "${{ steps.files.outputs.changed_files }}" is beginning 🚀 \nExpect this to take a couple of minutes ⏰`
           })
           
-    - name: Checkout torusbot repo
+    - name: Checkout private torusbot repo
       uses: actions/checkout@v3
       with:
         repository: pQBL/torusbot 
+        token: ${{ secrets.BOTS_ACCESS_TOKEN }}
         path: bot
     
     - name: Install python dependeices

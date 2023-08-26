@@ -14,10 +14,11 @@ jobs:
           path: main
           fetch-depth: 0  # Fetch all history for all branches and tags.
 
-      - name: Checkout qbl-bot-pipeline repo
+      - name: Checkout private qbl-bot-pipeline repo
         uses: actions/checkout@v3
         with:
           repository: pQBL/qbl-bot-pipeline 
+          token: ${{ secrets.BOTS_ACCESS_TOKEN }}
           path: bot
           
       - name: Install python dependeices
