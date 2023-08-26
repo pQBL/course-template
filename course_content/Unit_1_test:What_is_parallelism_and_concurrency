@@ -55,3 +55,4 @@ Page_name: What is parallelism and concurrency?
   
     C) Tasks are executed one after another in a specific order.
     - Correct. In a sequential execution model, tasks are executed one after the other, with each task only starting after the previous one has completed.
+
