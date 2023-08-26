@@ -39,7 +39,7 @@ jobs:
             body: `Deployment of file: "${{ steps.files.outputs.changed_files }}" is beginning 🚀 \nExpect this to take a couple of minutes ⏰`
           })
           
-    - name: Checkout private torusbot repo
+    - name: Checkout torusbot repo
       uses: actions/checkout@v3
       with:
         repository: pQBL/torusbot 
