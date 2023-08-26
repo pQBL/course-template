@@ -1,0 +1,58 @@
+Unit_name: Unit 1 test
+Page_name: What is parallelism and concurrency?
+
+1. What does concurrency mean in programming?
+
+    A) Executing multiple tasks at exactly the same time.
+    - Incorrect. This is a common misconception and actually describes parallelism. In concurrent programming, tasks may seem to occur simultaneously but they are actually being executed in overlapping time periods.
+  
+    B) Executing tasks in overlapping time intervals.
+    - Correct. Concurrency involves managing multiple tasks which may overlap in time, but they are not necessarily being executed simultaneously.
+  
+    C) Executing tasks in a sequential order, one after the other.
+    - Incorrect. This describes sequential programming, where tasks are executed one after the other without overlap.
+
+2. Consider the following Go code snippet: ### go `go func() { println("Hello") }()` ###. What is the term for this construct?
+
+    A) A sequential function.
+    - Incorrect. This misunderstanding might stem from the single line execution. In Go, this construct represents a goroutine, a lightweight thread that can run independently.
+    
+    B) A goroutine.
+    - Correct. This is a goroutine, a lightweight thread of execution in Go that can run independently of other goroutines.
+    
+    C) A channel.
+    - Incorrect. A channel in Go is a mechanism for synchronization and communication between goroutines, this construct is not used for that purpose.
+
+3. The code ### go `c := make(chan int)` ### creates what in Go?
+
+    A) A goroutine.
+    - Incorrect. This code line does create a construct, but the construct being created is a channel, which is distinct from a goroutine.
+  
+    B) A channel.
+    - Correct. This line of code creates a channel, `c`, that can pass integers between goroutines.
+  
+    C) A Go function.
+    - Incorrect. This line does not represent a Go function. It is actually creating a channel for communication between goroutines.
+
+4. Given the Go code ### go `func add(c chan int) { x := 1 + 2; c <- x }` ###. What does the 'c <- x' syntax imply?
+
+    A) A function call.
+    - Incorrect. The '<-' syntax in the context of a Go channel is used for something quite different from a function call.
+    
+    B) Sending a value to a channel.
+    - Correct. The '<-' syntax in this context is used in Go to send a value to a channel.
+    
+    C) An arithmetic operation.
+    - Incorrect. Although there is an arithmetic operation in the function, 'c <- x' does not indicate an arithmetic operation.
+
+5. What describes the execution of tasks in a sequential program flow?
+
+    A) Tasks are executed simultaneously using multiple processors or threads.
+    - Incorrect. This describes parallel execution. In a sequential program flow, tasks are executed one at a time, each starting only after the completion of the previous task.
+  
+    B) Tasks are executed in overlapping time intervals but are not necessarily simultaneous.
+    - Incorrect. This is a characteristic of concurrent, not sequential, programming. In sequential programming, tasks are executed one after the other, with no overlap in time.
+  
+    C) Tasks are executed one after another in a specific order.
+    - Correct. In a sequential execution model, tasks are executed one after the other, with each task only starting after the previous one has completed.
+
