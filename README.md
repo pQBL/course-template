@@ -24,7 +24,7 @@ This is done using [GitHub Actions](https://github.com/features/actions) in comb
 
 ## Setup
 
-In order to use this repo some initial setup is required, which is described in the following guide. Note that this guide assumes that you already have the necessary credentials (OpenAI API key, GitHub token and Torus login). There is also a [setup tutorial video](#video-setup-tutorial) that may help to guide you through the process.
+In order to use this repo some initial setup is required, which is described in the following guide. Note that this guide assumes that you already have the necessary credentials (OpenAI API key and Torus login). There is also a [setup tutorial video](#video-setup-tutorial) that may help to guide you through the process.
 
 ### 1. Fork template repository
 
@@ -53,7 +53,6 @@ Create the following GitHub secrets in your forked repository (make sure to name
 | **Name**                | **Description**                                                                                     |
 |-------------------------|-----------------------------------------------------------------------------------------------------|
 | `OPENAI_API_KEY_KTH`    | API key for OpenAI                                                                                  | 
-| `BOTS_ACCESS_TOKEN`     | GitHub access token that has read access to the torusbot and qbl-bot-pipeline repositories          |
 | `CURRICULUM_URL`        | URL to the curriculum page of your course on Torus                                                  |
 | `USER_EMAIL`            | Email for torus account that has access to your course                                              |
 | `USER_PASSWORD`         | Password for torus account that has access to your course                                           |
