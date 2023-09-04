@@ -1,0 +1,67 @@
+Unit_name: Test unit 2
+Page_name: Test page 1
+
+1. Let's say you're teaching a colleague how to set up Go on their machine, and they ask you about a command to check if Go is installed properly. What would you suggest?
+
+    A) Telling them to use `check go`
+    - Incorrect. There is no such command as `check go`. The correct command actually involves using Go's name itself.
+  
+    B) Advising them to run `go --version`
+    - Incorrect. While this command syntax might work with other languages/tools, Go uses a different convention.
+
+    C) Telling them to run `go version`
+    - Correct. Running `go version` will display the installed version of Go, or inform them that Go is not found if it's not installed correctly.
+
+
+2. Imagine you're starting a Go project and need to manage various packages your project depends on. What feature of Go would assist you with this?
+   
+    A) Turning on fast execution mode to make Golang applications run faster
+    - Incorrect. Go Modules are not responsible for enhancing the performance of applications. They serve a different purpose in the ecosystem.
+
+    B) Making use of Go Modules for dependency management
+    - Correct. Indeed, Go Modules allow you to handle dependencies more efficiently in your projects.
+
+    C) Implementing Go routines to parallelize the code
+    - Incorrect. Even though Go is indeed capable of handling the mentioned parallel and concurrent operations, this concept is unrelated to Go Modules.
+
+3. Here's a scenario - you're in the directory of your Go project on your terminal. What command would initiate a new module?
+
+    A) `go new module`
+    - Incorrect. This command would not initialize Go modules.
+  
+    B) `go mod start`
+    - Incorrect. While intuitive, this command does conform with the Go language syntax for initializing a module.
+
+    C) `go mod init`
+    - Correct. Indeed, `go mod init` is used to start a new Go module.
+
+4. Given this Go code on your mod file named `go.mod` 
+
+```go
+module example
+
+go 1.15
+
+require github.com/pkg/errors v0.9.1 // indirect
+```
+ Now, let's say you run `go mod tidy` and that you're not using the `github.com/pkg/errors` package anymore within your project. What would you expect the `go mod tidy` command to do?
+
+    A) Compile and run the Go code
+    - Incorrect. The `go mod tidy` functionality does not include compiling or executing code.
+
+    B) Update the `go.mod` file to its current usage in the project
+    - Correct. `go mod tidy` ensures that the go.mod file matches the current usage in the project, which includes removing the unused packages.
+
+    C) Print the Go version on the terminal
+    - Incorrect. The `go mod tidy` command does not interact with Go version information.
+
+5. While initiating a Go module with the command `go mod init example.com/my/project` you accidentally made a typo in the module path. What would the Go toolchain do?
+
+    A) Create new directories to match your typo
+    - Incorrect. It doesn't create any new directories based on what you input as your module path.
+
+    B) It's not possible to finalize module initiation
+    - Correct. The initiation process would indeed fail as it can't validate the path due to the typo.
+
+    C) Overlook the typo and create a module at default path
+    - Incorrect. The Go toolchain doesn't do this either- it strictly follows the provided module path.
