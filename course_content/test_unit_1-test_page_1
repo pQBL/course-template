@@ -1,0 +1,63 @@
+Unit_name: Test unit 1
+Page_name: Test page 1
+
+1. Consider the Go/Golang code snippet below:
+
+```go
+func printNumbers() {
+    for i := 1; i <= 10; i++ {
+        fmt.Println(i)
+    }
+}
+
+func main() {
+    go printNumbers()
+}
+```
+
+Which statement is correct about the code snippet?
+
+    A) The code will always print numbers from 1 to 10
+    - Incorrect. Because the `printNumbers` function is being launched as a goroutine, there’s no guarantee it will get a chance to run, as the main function may exit first.
+  
+    B) The code will not compile due to errors 
+    - Incorrect. The code is valid Go code and will compile without errors. However, its functionality might not be as expected due to the usage of goroutines.
+    
+    C) The code might not print anything at all
+    - Correct. Because the `printNumbers` function is being launched as a goroutine, there’s no guarantee it will get a chance to run, as the main function may exit first.
+
+2. Which of the following statements about concurrent and parallel execution is not true?
+
+    A) In a system with a single CPU core, concurrent execution can still occur
+    - Incorrect. This statement is true. Concurrency is more about task scheduling — tasks can be started, paused, and subsequently resumed, giving the illusion of simultaneous execution, even on a single processor.
+  
+    B) Parallel execution always implies concurrent execution
+    - Incorrect. This statement is true, as parallel execution is a specific type of concurrent execution where tasks are literally running at the same time on multiple processors.
+  
+    C) Each goroutine in Go is mapped to a separate thread in the OS
+    - Correct. This statement is not true. Goroutines are much more lightweight than OS threads and multiple goroutines can be multiplexed onto a single OS thread.
+
+3. The following snippet is a simple sequential program in Go that calculates the sum of integers from 1 to 10. Objectively, which of the following changes would not make the code concurrent?
+
+```go
+func sumNumbers() int {
+    sum := 0
+    for i := 1; i <= 10; i++ {
+        sum += i
+    }
+    return sum
+}
+
+func main() {
+    fmt.Println(sumNumbers())
+}
+```
+
+    A) Break the range 1-10 into a few parts, and sum each part in a separate goroutine, using channels to get the final sum
+    - Incorrect. This would actually make the code concurrent as different parts are being summed independently of the others in separate goroutines.
+  
+    B) Use `runtime.GOMAXPROCS(2)` to set the maximum number of CPUs that can be executing simultaneously.
+    - Correct. Adding `runtime.GOMAXPROCS(2)` on its own will not make this code concurrent. While it sets the maximum number of CPUs that can be executing simultaneously, it doesn't alter the code to run tasks concurrently.
+    
+    C) Use a `sync.WaitGroup` to make the main goroutine wait for other goroutines to finish
+    - Incorrect. This implies that there are other goroutines that the main goroutine is waiting for. Hence, the programming could be made concurrent.
